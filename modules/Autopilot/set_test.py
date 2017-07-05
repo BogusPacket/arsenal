@@ -1,8 +1,14 @@
-#!/usr/bin/python3
+#!/usr/bin/python
+import os, sys, mysql.connector, re
 
-a = [1, 1, 2, 3, 4, 4, 5, 6, 6, 6]
-s = set(a)
-a2 = s
-print len(s)
-s.add(8)
-print s
+def getPID_list():
+	result = []
+	cnx = mysql.connector.connect(user='root', password='choppersrus', host='127.0.0.1', database='autopilot')
+	cursor = cnx.cursor()
+	query = "SELECT g2a_product_id FROM ITEMS"
+	cursor.execute(query)
+	for each in cursor:
+		result.append(each)
+		print result[len(result) - 1]
+getPID_list()
+exit(1)
