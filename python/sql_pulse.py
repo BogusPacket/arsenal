@@ -59,7 +59,6 @@ def g2a_get(pid):
 def main():
 	p = ITEMS_get_all_G2APIDs()
 	dict = g2a_get(94)
-	for each in dict:
-		print each
+	print dict[1]
 if __name__ == "__main__":
 	main()
