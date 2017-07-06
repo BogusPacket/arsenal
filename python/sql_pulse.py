@@ -1,5 +1,13 @@
 #!/usr/bin/python
-import sys, os, re, mysql.connector, urllib2
+import sys, os, re, time, datetime, mysql.connector, urllib2
+
+COLOR_RED	=	"\x1b[31m"
+COLOR_GREEN	=	"\x1b[32m"
+COLOR_YELLOW	=	"\x1b[33m"
+COLOR_BLUE	=	"\x1b[34m"
+COLOR_MAGENTA	=	"\x1b[35m"
+COLOR_CYAN	=	"\x1b[36m"
+COLOR_RESET 	=	"\x1b[0m"
 
 cnx = mysql.connector.connect(user='root', password='choppersrus', host='127.0.0.1', database='autopilot')
 cursor = cnx.cursor()
@@ -31,13 +39,22 @@ def G2A_DATA_update(productid, sellername):
 	cursor.execute(q)
 	for each in cursor:
 		print each
+def g2a_get(pid):
+	url = "https://www.g2a.com/marketplace/product/auctions/?id="
+	headers = {"User-Agent" : "Lynx/2.8.8dev.3 lib222-FM2.14 SSL-MM/1.4.1"}
+	t = str(datetime.datetime.now())
+	res = urllib2.Request(url + str(pid), headers=headers)
+	sourceFile = urllib2.urlopen(res)
+	s = sourceFile.read()
+	prices = re.findall("(?<=\"f\"\:\").{6}", s);
+	users = re.findall("(?<=\"cname\"\:\")[a-zA-Z0-9_@]+", s);
+	print prices
+	print users
 
 def main():
-	p = 94
-	sellernames = G2A_DATA_get_all_sellernames(94)
-	i = 0
-	while i < len(sellernames):
-		G2A_DATA_update(p, sellernames[i])
-		i += 1
+	p = ITEMS_get_all_G2APIDs()
+	sellernames = G2A_DATA_get_all_sellern
+	g2a_get(94)
+	
 if __name__ == "__main__":
 	main()
