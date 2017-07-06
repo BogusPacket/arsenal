@@ -34,11 +34,12 @@ def G2A_DATA_get_all_sellernames(productid):
 	return l
 
 #TODO	def G2A_DATA_update(t, productid, orderid, sellername, price):
-def G2A_DATA_update(productid, sellername):
+def G2A_DATA_update(productid, sellername, price):
 	q = "SELECT * FROM G2A_DATA WHERE productid = " + str(productid) + " AND sellername = \'" + sellername + "\'"
 	cursor.execute(q)
 	for each in cursor:
 		print each
+		
 def g2a_get(pid):
 	url = "https://www.g2a.com/marketplace/product/auctions/?id="
 	headers = {"User-Agent" : "Lynx/2.8.8dev.3 lib222-FM2.14 SSL-MM/1.4.1"}
@@ -46,14 +47,17 @@ def g2a_get(pid):
 	res = urllib2.Request(url + str(pid), headers=headers)
 	sourceFile = urllib2.urlopen(res)
 	s = sourceFile.read()
-	prices = re.findall("(?<=\"f\"\:\").{6}", s);
+	prices = re.findall("(?<=\"f\"\:\"\$).{5}", s);
 	users = re.findall("(?<=\"cname\"\:\")[a-zA-Z0-9_@]+", s);
-	print prices
-	print users
+	d = dict()
+	i = 0
+	while i < len(prices):
+		d[users[i]] = float(prices[i])
+		i += 1
+	print d
 
 def main():
 	p = ITEMS_get_all_G2APIDs()
-	sellernames = G2A_DATA_get_all_sellern
 	g2a_get(94)
 	
 if __name__ == "__main__":
