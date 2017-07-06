@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import sys, os, re, time, datetime, urllib2, mysql.connector
+import sys, os, threading, re, time, datetime, urllib2, mysql.connector
 
 win64_GoogleChrome = "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36";
 lynx = "Lynx/2.8.8dev.3 lib222-FM2.14 SSL-MM/1.4.1";
@@ -36,8 +36,6 @@ def prev_check(u, p):
 	except:
 		previous[u] = p
 		return 1
-def urls_create():
-	
 while 1:
 	t = "'"
         t += str(datetime.datetime.now())
@@ -52,12 +50,13 @@ while 1:
 	orderids = re.findall("(?<=\"a\"\:\")\d+", s);
 	productID = "94"
 	cmd = "mysql --host=127.0.0.1 --user=root --password=choppersrus autopilot -e "
-	query = ("\"INSERT INTO G2A_DATA (Time, ID, productid, orderid, sellername, price) VALUES ")
+	query = ("\"INSERT INTO G2A_DATA (row, time, productid, orderid, sellername, price) VALUES ")
 	cmd += query
 	#print prices
 	#print users
 	#print orderids
 	i = 0
+	ind = 15
 	while (i < len(prices)):
 		fprice = float(prices[i].split("$")[1])
 		if prev_check(users[i], fprice):
@@ -65,11 +64,12 @@ while 1:
 			user = "\'" + users[i] + "\'"
 			price = "\'" + prices[i].split("$")[1] + "\'"
 			print price
-			values = "(" + t + ", " + "1" + ", " + productID + ", " + str(orderid) + ", " + user + ", " + price + ")\""
+			values = "(" + str(ind) + ", " + t + ", " + productID + ", " + str(orderid) + ", " + user + ", " + price + ")\""
 			float(prices[i].split("$")[1])
 			os.system(cmd + values)
 			print TIME_B + SUCCESS_B + "Successfully Inserted New Data! Query:\t" + COLOR_CYAN + query + values + COLOR_RESET
 		i += 1
+		ind += 1
 	iter += 1
 	print previous
 	time.sleep(3)
