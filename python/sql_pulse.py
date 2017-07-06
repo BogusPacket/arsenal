@@ -34,11 +34,11 @@ def G2A_DATA_get_all_sellernames(productid):
 	return l
 
 #TODO	def G2A_DATA_update(t, productid, orderid, sellername, price):
-def G2A_DATA_update(productid, sellername, price):
-	q = "SELECT * FROM G2A_DATA WHERE productid = " + str(productid) + " AND sellername = \'" + sellername + "\'"
-	cursor.execute(q)
-	for each in cursor:
-		print each
+def G2A_DATA_update(pid, sellername, price):
+	print "SELECT * FROM G2A_DATA WHERE productid = " + str(pid) + " AND sellername = \'" + sellername + "\'"
+	#cursor.execute(q)
+	#for each in cursor:
+	#	print each
 		
 def g2a_get(pid):
 	url = "https://www.g2a.com/marketplace/product/auctions/?id="
@@ -54,11 +54,12 @@ def g2a_get(pid):
 	while i < len(prices):
 		d[users[i]] = float(prices[i])
 		i += 1
-	print d
+	return d
 
 def main():
 	p = ITEMS_get_all_G2APIDs()
-	g2a_get(94)
-	
+	dict = g2a_get(94)
+	for each in dict:
+		print each
 if __name__ == "__main__":
 	main()
