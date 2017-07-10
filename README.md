@@ -1,1 +1,6 @@
-Just a collection of libraries and tools to make your programming experience easier :)
+Dependencies:
+  mysql-connector-cpp
+  libboost-dev
+  python3
+  urllib
+  
