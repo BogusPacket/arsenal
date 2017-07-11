@@ -1,4 +1,8 @@
-all:
-	g++ arsenal.cpp src/converter.cpp src/libpcap_test.cpp -lnet -lpcap -o arsenal
+I=-Iincludes/
+CONVERTER=src/converter.cpp
+
+
+arsenal:
+	g++ arsenal.cpp $(CONVERTER) $(I) -o arsenal
 
 
