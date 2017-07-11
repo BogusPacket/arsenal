@@ -39,6 +39,4 @@ typedef struct IPv4 {
 } IPv4;
 
 void libpcap_test();
-unsigned int IPv4_n2h(unsigned int);
-std::string IPv4_i2s(unsigned int);
 #endif
