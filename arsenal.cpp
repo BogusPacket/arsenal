@@ -1,4 +1,3 @@
-#include "includes/arsenal.h"
 
 int main(int argc, char* argv[]){
 	uint32_t addr = 0x64d2f82a;
