@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import sys, os, re, time, datetime,  cymysql, urllib2, threading, Queue
+import sys, os, re, time, datetime,  cymysql, urllib.request , threading, queue
 
 COLOR_RED	=	"\x1b[31m"
 COLOR_GREEN	=	"\x1b[32m"
@@ -31,7 +31,7 @@ def G2A_DATA_MAX_ROW():
 	cursor.execute(q)
 	r = str(cursor.fetchall()[0])
 	r = r.split("(")[1]
-	r = int(r.split("L,)")[0])
+	r = int(r.split(",)")[0])
 	r += 1
 	return str(r)
 def ITEMS_get_all_G2APIDs():
@@ -40,7 +40,7 @@ def ITEMS_get_all_G2APIDs():
 	pid = []
 	for each in cursor:
 		id = str(each).split("(")[1]
-		id = int(id.split("L,)")[0])
+		id = int(id.split(",)")[0])
 		pid.append(id)
 	return pid
 
@@ -94,21 +94,6 @@ def G2A_DATA_update(d):
 			print(cursor.execute(query))
 	cnx.commit()
 	print("Committed!")
-'''
-	for r in rows:
-		cursor.execute("SELECT sellername, price FROM G2A_DATA WHERE row = " + r)
-		l = cursor.fetchall()
-		name = str(l[0])
-		name = name.split(", ")[0]
-		name = name.split("u\'")[1]
-		name = name.split("'")[0]
-		price = str(l[0])
-		price = price.split(", ")[1]
-		price = float(price.split(")")[0])
-		if (d[name] == price):
-			print("Voiding Unchanged Price: {" + name + " : " + price + "}")
-			return
-'''
 
 def g2a_get(pid_q, dict_q):
 	result = []
@@ -118,11 +103,7 @@ def g2a_get(pid_q, dict_q):
 		url = "https://www.g2a.com/marketplace/product/auctions/?id="
 		headers = {"User-Agent" : "Lynx/2.8.8dev.3 lib222-FM2.14 SSL-MM/1.4.1"}
 		t = str(datetime.datetime.now())
-		try:
-			sourceFile = urllib2.urlopen(url + str(pid), timeout=1)
-		except:
-			
-			continue
+		sourceFile = urllib.request.urlopen(url + str(pid), timeout=1)
 		s = sourceFile.read()
 		sourceFile.close()
 		prices = re.search(r"(?<=\"lowest_price\"\:\")([0-9]+\.[0-9]+)", s, re.M | re.I)
@@ -146,8 +127,8 @@ def main():
 	p = ITEMS_get_all_G2APIDs()
 	dicts = []
 	print(COLOR_MAGENTA + "Sending Requests..." + COLOR_RESET)
-	pid_q = Queue.Queue()
-	dict_q = Queue.Queue()
+	pid_q = queue.Queue()
+	dict_q = queue.Queue()
 	for each in p:
 		pid_q.put(each)
 	processes = []
