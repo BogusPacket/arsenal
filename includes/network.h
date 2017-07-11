@@ -5,6 +5,7 @@
 #define IPV4_DF 0x4000
 #define IPV4_MF 0x2000
 #define IPV4_OFFMASK 0x1ffff
+#define SNAP_LEN 65535
 typedef struct Ethernet {
 	uint8_t dst[6];
 	uint8_t src[6];
