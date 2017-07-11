@@ -12,6 +12,9 @@
 #define COLOR_MAGENTA "\x1b[35m"
 #define COLOR_CYAN "\x1b[36m"
 #define COLOR_RESET "\x1b[0m"
+#define INFO_BANNER "\x1b[0m[\x1b[34m+\x1b[0m] "
+#define SUCCESS_BANNER "\x1b[0m[\x1b[32m+\x1b[0m] "
+#define ERROR_BANNER "\x1b[0m[\x1b[31m+\x1b[0m] "
 #include <bitset>
 #include <iostream>
 #include <sstream>
