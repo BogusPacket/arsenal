@@ -2,7 +2,7 @@ I=-Iincludes/
 CONVERTER=src/converter.cpp
 
 
-arsenal:
+arsenal modules/converter.cpp:
 	g++ arsenal.cpp $(CONVERTER) $(I) -o arsenal --std=c++11
 
 
