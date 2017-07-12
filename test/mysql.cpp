@@ -1,7 +1,11 @@
 #include "arsenal.h"
 #include "mysql.h"
 
-int main(void){
-  MySQL m("127.0.0.1", 3306, "root", "choppersrus");
+using namespace std;
+int main(int argc, char* argv[]){
+  string host = "127.0.0.1";
+  string user = "root";
+  string pass = "choppersrus";
+  MySQL m(host, 3306, user, pass);
   return 1;
 }
