@@ -5,7 +5,9 @@
 #include <cppconn/exception.h>
 #include <cppconn/statement.h>
 class MySQL{
+  char*;
+  char*;
   public:
     MySQL(const char*, int, const char*, const char*);
-};
+}
 #endif
