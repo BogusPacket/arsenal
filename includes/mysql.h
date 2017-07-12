@@ -5,8 +5,8 @@
 #include <cppconn/exception.h>
 #include <cppconn/statement.h>
 class MySQL{
-  char*;
-  char*;
+  sql::Driver* driver;
+  sql::Connection* connection;
   public:
     MySQL(const char*, int, const char*, const char*);
 }
