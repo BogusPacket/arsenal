@@ -15,7 +15,7 @@ public:
     s << host;
     s << ":";
     s << port;
-    cout << s;
+    std::cout << s;
   }
   
 };
