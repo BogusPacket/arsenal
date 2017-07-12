@@ -9,5 +9,5 @@ class MySQL{
   sql::Connection* connection;
   public:
     MySQL(const char*, int, const char*, const char*);
-}
+};
 #endif
