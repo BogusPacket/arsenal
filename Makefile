@@ -10,5 +10,5 @@ converter modules/converter.cpp:
 	g++ converter.cpp $(SRC) $(INC) -o converter --std=c++11
 
 mysql_test test/mysql.cpp:
-	g++ mysql.cpp $(USR_INC) $(CPPCONN) $(SQL_ARG) -o mysql --std=c++11
+	g++ test/mysql.cpp $(USR_INC) $(CPPCONN) $(SQL_ARG) -o mysql --std=c++11
 
