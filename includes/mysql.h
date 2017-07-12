@@ -9,6 +9,6 @@ class MySQL{
     sql::Driver*;
     sql::Connection*;
   public:
-    MySQL();
+    MySQL(const char*, int, const char*, const char*);
 }
 #endif
