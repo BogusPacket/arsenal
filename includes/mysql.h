@@ -14,7 +14,7 @@ public:
     std::stringstream s;
     s << host;
     s << ":";
-    s << port
+    s << port;
     cout << s;
   }
   
