@@ -9,6 +9,7 @@ class MySQL{
   sql::Driver* driver;
   sql::Connection* connection;
   public:
-    MySQL(const char*, int, const char*, const char*);
+    template<typename S>
+    MySQL(S, int, S, S);
 };
 #endif
