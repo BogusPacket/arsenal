@@ -2,6 +2,6 @@
 #include "mysql.h"
 
 int main(void){
-  
-return 1;
+  MySQL m("127.0.0.1", 3306, "root", "choppersrus")
+  return 1;
 }
