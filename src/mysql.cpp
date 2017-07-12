@@ -5,13 +5,13 @@ private:
   sql::Driver *driver = NULL;
   sql::Connection *connection = NULL;
 public:
-  MySQL(const char* host, int port, const char* user, const char* pass, char* dev){
+  template <typename S, typename I>
+  MySQL(S host, I port, S user, S pass, S dev){
     std::stringstream s;
     s << host;
     s << ":";
     s << port
     cout << s;
-    connection = driver->connect(s.c_str(), user, pass);
   }
   
 };
