@@ -9,7 +9,7 @@ private:
   sql::Driver *driver = NULL;
   sql::Connection *connection = NULL;
 public:
-  template <typename S>
+  template <class S>
   MySQL(S host, int port, S user, S pass, S dev){
     std::stringstream s;
     s << host;
