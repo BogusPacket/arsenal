@@ -10,7 +10,7 @@ class MySQL {
     sql::Connection *connection = NULL;
     
   public:
-    MySQL(char*, int, char*, char*, char*);
+    MySQL(char*, int, char*, char*);
     MySQL(const char*, int, const char*, const char* const char*);
     MySQL(char const*, int, char const*, char const*, char const*);
     MySQL(std::string&, int, std::string&, std::string&, std::string&);
