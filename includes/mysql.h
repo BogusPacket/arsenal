@@ -13,11 +13,14 @@ class MySQL {
     sql::Driver *driver = NULL;
     sql::Connection *connection = NULL;
   public:
-	MySQL(H host, U user, P passwd){
-		std::string s = MYSQL_PROTO_TCP + host;
-		s += ":";
-		s += std::to_string(port);
-		std::cout << s;
-	}
+	MySQL(H host, U user, P passwd);
 };
+template<>
+MySQL::MySQL<std::string,std::string,std::string>(std::string host,std::string user,std::string passwd){
+	std::string s = MYSQL_PROTO_TCP + host;
+	s += ":";
+	s += std::to_string(port);
+	std::cout << s;
+
+}
 #endif
