@@ -30,17 +30,4 @@ template<> class MySQL<TCP> {
 	template<class D>void switchDatabase(D d){con->setSchema(d);}
 	template<class S> Query query(){return new Query;}
 };
-template<const char P> class Query : public MySQL<const char P>{
-	private:
-		sql::Statement *stmt
-		sql::ResultSet *res;
-	public:
-		Query(){;}
-		~Query(){;}
-		template<class S>
-		void get(S s){
-			stmt = con->createStatement();
-			res = stmt->executeQuery(s);
-		}
-};
 #endif
