@@ -14,9 +14,10 @@ class MySQL<TCP> {
     int port = 3306;
     sql::Driver *driver = NULL;
     sql::Connection *con = NULL;
+    	_MySQL()
   public:
   	template <class H, class U, class P>
-	MySQL(H host, U user, P passwd, int port){
+	MySQL(H host, U user, P passwd){
 		std::string s = "tcp://" ;
 		s += host;
 		s += ":";
@@ -25,10 +26,12 @@ class MySQL<TCP> {
 		driver = get_driver_instance();
 		con = driver->connect(host, user, passwd);
 	}
-	template<class D>
-	void switchDatabase(D d){
-	con->setSchema(d);}
-	
+	int setPort(int p){
+		if (p < 65535 && p > 0){port = p; return 1;}
+		else {return 0;}
+	}
+	template<class D>void switchDatabase(D d){con->setSchema(d);}
+	template<>void switchDatabase(std::string d){con->setSchema(d.c_str());}
 	template<class S>
 	S execute(S s){
 		sql::Statement *stmt;
