@@ -33,7 +33,7 @@ class MySQL<TCP> {
 	void switchDatabase(D d){con->setSchema(d);}
 
 	template<class S>
-	void execute(S statement){
+	void query(S statement){
 		S result;
 		sql::Statement *stmt;
 		sql::ResultSet *res;
@@ -42,7 +42,5 @@ class MySQL<TCP> {
 		res->next();
 		std::cout << res;
 	}
-	
-	
 };
 #endif
