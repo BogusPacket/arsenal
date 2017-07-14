@@ -8,15 +8,13 @@
 #define UDP 2
 template<const char P> class MySQL;
 
-template<>
-class MySQL<TCP> {
+template<> class MySQL<TCP> {
   private:
     int port = 3306;
     sql::Driver *driver = NULL;
     sql::Connection *con = NULL;
   public:
-  	template <class H, class U, class P>
-	MySQL(H host, U user, P passwd){
+  	template <class H, class U, class P> MySQL(H host, U user, P passwd){
 		std::string s = "tcp://" ;
 		s += host;
 		s += ":";
@@ -29,18 +27,24 @@ class MySQL<TCP> {
 		if (p < 65535 && p > 0){port = p; return 1;}
 		else {return 0;}
 	}
-	template<class D>
-	void switchDatabase(D d){con->setSchema(d);}
-
-	template<class S>
-	void query(S statement){
-		S result;
-		sql::Statement *stmt;
-		sql::ResultSet *res;
+	template<class D>void switchDatabase(D d){con->setSchema(d);}
+	template<class S> Query execute(S statement){
 		stmt = con->createStatement();
 		res = stmt->executeQuery(statement);
 		res->next();
-		std::cout << res;
 	}
+};
+template<const char P> class Query : public MySQL<const char P>{
+	private:
+		sql::Statement *stmt
+		sql::ResultSet *res;
+	public:
+		Query(){;}
+		~Query(){;}
+		template<class S>
+		void get(S s){
+			stmt = con->createStatement();
+			res = stmt->executeQuery(s);
+		}
 };
 #endif
