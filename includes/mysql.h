@@ -24,8 +24,18 @@ class MySQL<TCP> {
 		std::cout << s;
 		driver = get_driver_instance();
 		con = driver->connect(host, user, passwd);
-		std::cout << con->getSchema("autopilot");
 	}
+	template<class D>
+	switchDatabase(D d){con->setSchema(d);}
+	
+	template<class S> S execute(S statement);
+	template<>
+	std::string execute(std::string statement){
+		sql::Statement *stmt;
+		stmt = con->createStatement();
+		print stmt->execute(statement.c_str());
+	}
+	
 	
 };
 #endif
