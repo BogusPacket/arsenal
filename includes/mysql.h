@@ -33,7 +33,7 @@ class MySQL<TCP> {
 	S execute(S statement){
 		sql::Statement *stmt;
 		stmt = con->createStatement();
-		cout << stmt->execute(S);
+		std::cout << stmt->execute(statement);
 	}
 	
 	
