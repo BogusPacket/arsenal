@@ -32,6 +32,7 @@ class MySQL<TCP> {
 	template<class S>
 	S execute(S s){
 		sql::Statement *stmt;
+		sql::ResultSet *res;
 		stmt = con->createStatement();
 		stmt->execute(s);
 		while (res->next()){
