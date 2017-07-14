@@ -17,7 +17,8 @@ class MySQL<TCP> {
   public:
   	template <class H, class U, class P>
 	MySQL(H host, U user, P passwd, int port){
-		std::string s = MYSQL_PROTO_TCP + host;
+		std::string s = "tcp://" ;
+		s += host;
 		s += ":";
 		s += std::to_string(port);
 		std::cout << s;	
