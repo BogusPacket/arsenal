@@ -24,6 +24,7 @@ class MySQL<TCP> {
 		std::cout << s;
 		driver = get_driver_instance();
 		connection = driver->connect(host, user, passwd);
+		cout << connection->getSchema("autopilot")
 	}
 	
 };
