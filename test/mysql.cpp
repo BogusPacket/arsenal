@@ -6,6 +6,6 @@ int main(int argc, char* argv[]){
   string host = "127.0.0.1";
   string user = "root";
   string pass = "choppersrus";
-  MySQL<string> m(host, user, pass);
+  MySQL<TCP> m(host, user, pass, 22);
   return 1;
 }
