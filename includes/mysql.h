@@ -4,16 +4,19 @@
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
 #include <cppconn/statement.h>
-#define MYSQL_PROTO_TCP "tcp://"
-#define MYSQL_PROTO_UDP "udp://"
-template<typename H, typename U, typename P>
-class MySQL {
+#define SQL_TCP "tcp://"
+#define SQL_UDP "udp://"
+template<const char* P> class MySQL;
+
+template<>
+class MySQL<SQL_TCP> {
   private:
     int port = 3306;
     sql::Driver *driver = NULL;
     sql::Connection *connection = NULL;
   public:
-	MySQL(H host, U user, P passwd){
+  	template <class H, class U, class P>
+	MySQL(H host, U user, P passwd, int port){
 		std::string s = MYSQL_PROTO_TCP + host;
 		s += ":";
 		s += std::to_string(port);
