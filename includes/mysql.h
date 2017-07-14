@@ -29,9 +29,11 @@ class MySQL<TCP> {
 		if (p < 65535 && p > 0){port = p; return 1;}
 		else {return 0;}
 	}
-	template<class D>void switchDatabase(D d){con->setSchema(d);}
+	template<class D>
+	void switchDatabase(D d){con->setSchema(d);}
 	
-	template<>void switchDatabase(std::string d){con->setSchema(d.c_str());}
+	template<>
+	void switchDatabase(std::string d){con->setSchema(d.c_str());}
 
 	template<class S>
 	void execute(S statement){
