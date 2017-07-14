@@ -9,6 +9,7 @@ int main(int argc, char* argv[]){
   MySQL<TCP> m(host, user, pass);
   m.setPort(3306);
   m.switchDatabase("autopilot");
-  m.query("SELECT * FROM ITEMS");
+  q = m.query();
+  q.execute("SELECT * FROM ITEMS")
   return 1;
 }
