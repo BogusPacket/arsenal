@@ -3,7 +3,7 @@
 
 using namespace std;
 int main(int argc, char* argv[]){
-  string host = "104.36.18.243";
+  string host = "127.0.0.1";
   string user = "root";
   string pass = "choppersrus";
   MySQL<TCP> m(host, user, pass);
