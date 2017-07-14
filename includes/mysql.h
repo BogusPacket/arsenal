@@ -30,10 +30,17 @@ class MySQL<TCP> {
 	con->setSchema(d);}
 	
 	template<class S>
-	S execute(S statement){
+	S execute(S s){
 		sql::Statement *stmt;
 		stmt = con->createStatement();
-		std::cout << stmt->execute(statement);
+		std::cout << stmt->execute(s);
+	}
+	
+	template<>
+	string execute(string s){
+		sql::Statement *stmt;
+		stmt = con->createStatement();
+		std::cout << stmt->execute(s.c_str());
 	}
 	
 	
