@@ -26,14 +26,14 @@ class MySQL<TCP> {
 		con = driver->connect(host, user, passwd);
 	}
 	template<class D>
-	switchDatabase(D d){con->setSchema(d);}
+	void switchDatabase(D d){
+	con->setSchema(d);}
 	
-	template<class S> S execute(S statement);
-	template<>
-	std::string execute(std::string statement){
+	template<class S>
+	S execute(S statement){
 		sql::Statement *stmt;
 		stmt = con->createStatement();
-		print stmt->execute(statement.c_str());
+		cout << stmt->execute(S);
 	}
 	
 	
