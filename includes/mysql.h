@@ -31,9 +31,6 @@ class MySQL<TCP> {
 	}
 	template<class D>
 	void switchDatabase(D d){con->setSchema(d);}
-	
-	template<>
-	void switchDatabase(std::string d){con->setSchema(d.c_str());}
 
 	template<class S>
 	void execute(S statement){
