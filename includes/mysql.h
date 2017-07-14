@@ -22,8 +22,8 @@ class MySQL<TCP> {
 		s += ":";
 		s += std::to_string(port);
 		std::cout << s;
-		driver = sql::::get_mysql_driver_instance();
-		con = driver->connect(host, user, passwd);
+		driver = sql::get_mysql_driver_instance();
+		connection = driver->connect(host, user, passwd);
 	}
 };
 #endif
