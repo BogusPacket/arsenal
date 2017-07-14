@@ -34,12 +34,13 @@ class MySQL<TCP> {
 
 	template<class S>
 	void execute(S statement){
+		S result;
 		sql::Statement *stmt;
 		sql::ResultSet *res;
 		stmt = con->createStatement();
 		res = stmt->executeQuery(statement);
 		res->next();
-		std::cout << res->getString("name");
+		std::cout << res;
 	}
 	
 	
