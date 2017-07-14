@@ -30,7 +30,9 @@ class MySQL<TCP> {
 		else {return 0;}
 	}
 	template<class D>void switchDatabase(D d){con->setSchema(d);}
+	
 	template<>void switchDatabase(std::string d){con->setSchema(d.c_str());}
+
 	template<class S>
 	void execute(S statement){
 		sql::Statement *stmt;
