@@ -38,6 +38,7 @@ class MySQL<TCP> {
 		sql::ResultSet *res;
 		stmt = con->createStatement();
 		res = stmt->executeQuery(statement);
+		res->next();
 		std::cout << res->getString("name");
 	}
 	
