@@ -37,7 +37,7 @@ class MySQL<TCP> {
 		sql::Statement *stmt;
 		sql::ResultSet *res;
 		stmt = con->createStatement();
-		stmt->execute(statement);
+		stmt->executeQuery(statement);
 		while (res->next()){
 			std::cout << "id = " << res->getInt(1); // getInt(1) returns the first column
   			// ... or column names for accessing results.
