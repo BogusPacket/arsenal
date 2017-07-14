@@ -13,7 +13,7 @@ class MySQL<TCP> {
   private:
     int port = 3306;
     sql::Driver *driver = NULL;
-    sql::Connection *connection = NULL;
+    sql::Connection *con = NULL;
   public:
   	template <class H, class U, class P>
 	MySQL(H host, U user, P passwd, int port){
@@ -23,8 +23,8 @@ class MySQL<TCP> {
 		s += std::to_string(port);
 		std::cout << s;
 		driver = get_driver_instance();
-		connection = driver->connect(host, user, passwd);
-		cout << connection->getSchema("autopilot")
+		con = driver->connect(host, user, passwd);
+		std::cout << con->getSchema("autopilot");
 	}
 	
 };
