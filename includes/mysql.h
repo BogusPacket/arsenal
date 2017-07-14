@@ -33,11 +33,11 @@ class MySQL<TCP> {
 	template<class D>void switchDatabase(D d){con->setSchema(d);}
 	template<>void switchDatabase(std::string d){con->setSchema(d.c_str());}
 	template<class S>
-	S execute(S s){
+	void execute(S statement){
 		sql::Statement *stmt;
 		sql::ResultSet *res;
 		stmt = con->createStatement();
-		stmt->execute(s);
+		stmt->execute(statement);
 		while (res->next()){
 			std::cout << "id = " << res->getInt(1); // getInt(1) returns the first column
   			// ... or column names for accessing results.
