@@ -34,17 +34,6 @@ class MySQL<TCP> {
 		sql::Statement *stmt;
 		stmt = con->createStatement();
 		stmt->execute(s);
-		while (stmt->next()){
-			std::cout << next;
-		};
-	}
-	
-	template<class S>
-	std::string execute(std::string s){
-		sql::Statement *stmt;
-		sql::ResultSet  *res;
-		stmt = con->createStatement();
-		res = stmt->execute(s.c_str());
 		while (res->next()){
 			std::cout << res;
 		};
