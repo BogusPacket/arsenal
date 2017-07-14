@@ -42,10 +42,11 @@ class MySQL<TCP> {
 	template<class S>
 	std::string execute(std::string s){
 		sql::Statement *stmt;
+		sql::ResultSet  *res;
 		stmt = con->createStatement();
-		stmt->execute(s.c_str());
-		while (stmt->next()){
-			std::cout << next;
+		res = stmt->execute(s.c_str());
+		while (res->next()){
+			std::cout << res;
 		};
 	}
 	
