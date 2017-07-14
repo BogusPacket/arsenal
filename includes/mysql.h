@@ -4,12 +4,12 @@
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
 #include <cppconn/statement.h>
-#define SQL_TCP "tcp://"
-#define SQL_UDP "udp://"
-template<const char* P> class MySQL;
+#define TCP 1
+#define UDP 2
+template<const char P> class MySQL;
 
 template<>
-class MySQL<SQL_TCP> {
+class MySQL<TCP> {
   private:
     int port = 3306;
     sql::Driver *driver = NULL;
