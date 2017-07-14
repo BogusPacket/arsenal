@@ -14,7 +14,6 @@ class MySQL<TCP> {
     int port = 3306;
     sql::Driver *driver = NULL;
     sql::Connection *con = NULL;
-    	_MySQL()
   public:
   	template <class H, class U, class P>
 	MySQL(H host, U user, P passwd){
