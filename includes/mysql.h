@@ -36,8 +36,8 @@ class MySQL<TCP> {
 		std::cout << stmt->execute(s);
 	}
 	
-	template<>
-	string execute(string s){
+	template<class S>
+	std::string execute(std::string s){
 		sql::Statement *stmt;
 		stmt = con->createStatement();
 		std::cout << stmt->execute(s.c_str());
