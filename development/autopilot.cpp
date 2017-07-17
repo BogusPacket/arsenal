@@ -38,4 +38,8 @@ public:
   ~Autopilot(){;}
 };
 
-int main()
+int main(void){
+  Autopilot a;
+  a.updateITEMS;
+  return 1;
+}
