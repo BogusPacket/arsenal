@@ -8,5 +8,5 @@ TESTS=-Itest/
 mysql_test test/mysql.cpp:
 	g++ test/mysql.cpp $(INC) $(USR_INC) $(CPPCONN) $(SQL_ARG) -o mysql --std=c++11
 autopilot_test development/autopilot.cpp:
-	g++ development/autopilot.cpp -o autopilot -lcurl
+	gcc development/autopilot.cpp -o autopilot -lcurl
 
