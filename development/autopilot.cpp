@@ -24,8 +24,7 @@ void updateITEMS(){
     curl_easy_cleanup(curl);
     printf("curl_easy_perform() failed: %s\n", curl_easy_strerror(res));}
   }
-}
-    curl_global_cleanup();
+  curl_global_cleanup();
 }
 int main(void){
   updateITEMS();
