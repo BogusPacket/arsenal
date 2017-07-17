@@ -12,7 +12,7 @@ void updateITEMS(){
   char* buf = (char*)malloc(100000);
   char url[] = POPULAR_ITEMS;
   curl_easy_setopt(curl, CURLOPT_URL, url);
-  //curl_easy_setopt(curl, CURLOPT_WRITEDATA, *buf);
+  curl_easy_setopt(curl, CURLOPT_WRITEDATA, *buf);
   #ifdef SKIP_PEER_VERIFICATION
   curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
   #endif
