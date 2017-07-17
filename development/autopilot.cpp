@@ -22,6 +22,7 @@ void updateITEMS(){
   if(res != CURLE_OK){
     printf("curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
   }
+  printf("%s", res);
   curl_easy_cleanup(curl);
   curl_global_cleanup();
 }
