@@ -9,7 +9,7 @@ void updateITEMS(){
   CURLcode res;
   curl_global_init(CURL_GLOBAL_DEFAULT);
   curl = curl_easy_init();
-  char* buf = (char*)malloc(1000);
+  char* buf = (char*)malloc(100000);
   char url[] = POPULAR_ITEMS;
   curl_easy_setopt(curl, CURLOPT_URL, url);
   //curl_easy_setopt(curl, CURLOPT_WRITEDATA, *buf);
