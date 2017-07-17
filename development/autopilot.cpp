@@ -1,5 +1,5 @@
-#include <iostream>
-#include <string>
+#include <stdio.h>
+#include <string.h>
 #include <curl/curl.h>
 
 class Autopilot{
@@ -40,6 +40,6 @@ public:
 
 int main(void){
   Autopilot a;
-  a.updateITEMS;
+  a.updateITEMS();
   return 1;
 }
