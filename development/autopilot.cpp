@@ -9,10 +9,10 @@ void updateITEMS(){
   CURLcode res;
   curl_global_init(CURL_GLOBAL_DEFAULT);
   curl = curl_easy_init();
-  char* buf = (char*)malloc(30000);
+  char* buf = (char*)malloc(1000);
   char url[] = POPULAR_ITEMS;
   curl_easy_setopt(curl, CURLOPT_URL, url);
-  curl_easy_setopt(curl, CURLOPT_WRITEDATA, *buf);
+  //curl_easy_setopt(curl, CURLOPT_WRITEDATA, *buf);
   #ifdef SKIP_PEER_VERIFICATION
   curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
   #endif
@@ -24,11 +24,11 @@ void updateITEMS(){
     std::cout << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;
   }
   curl_easy_cleanup(curl);
-  curl_global_cleanup();/*
+  curl_global_cleanup();
   std::regex r("(?:\"id\")([0-9]+)");
   std::smatch m;
   std::string s = buf;
-  std::cout << std::regex_search (s,m,r);*/
+  std::cout << std::regex_search (s,m,r);
 }
 int main(void){
   updateITEMS();
