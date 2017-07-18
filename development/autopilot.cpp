@@ -36,7 +36,7 @@ void updateITEMS(int num){
     CURLcode res;
     curl = curl_easy_init();
     std::string url = POPULAR_ITEMS;
-    url.append("&start=0&rows=");
+    url.append("0&rows=");
     url.append(std::to_string(num));
     std::cout << url.c_str() << std::endl; 
     curl_easy_setopt(curl, CURLOPT_URL, url);
