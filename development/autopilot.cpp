@@ -6,7 +6,7 @@
 #define G2A_BESTSELLERS 0x01
 #define DYN "&start=0&rows=12"
 
-private static inline void CURL_PREP(CURL* curl){
+static inline void CURL_PREP(CURL* curl){
     #ifdef SKIP_PEER_VERIFICATION
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
     #endif
