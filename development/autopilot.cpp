@@ -10,6 +10,7 @@ static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *use
     return size * nmemb;
 }
 
+
 void updateITEMS(){
   CURL* curl;
   CURLcode res;
@@ -35,8 +36,11 @@ void updateITEMS(){
   std::regex r("\"id\":(\\d+)");
   std::smatch m;
   std::regex_search (buf,m,r);
-  std::cout << m.str(1);
-  std::cout << m.size();
+  int i = 0;
+  while (i < m.size()){
+    std::cout << "New Product ID:\t" << m.str(i) << std::endl;
+    i++;
+  }
 }
 int main(void){
   updateITEMS();
