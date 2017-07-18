@@ -52,6 +52,7 @@ void updateITEMS(int num){
                 url = POPULAR_ITEMS;
                 url += std::to_string(num - i);
                 url += "&rows=24";
+                std::cout << url << std::endl;
                 i += 24;
         }
         curl_easy_setopt(curl, CURLOPT_URL, url);
