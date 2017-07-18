@@ -39,7 +39,7 @@ void updateITEMS(){
   int i = 0;
   while (i < m.size()){
     std::cout << i << std::endl;
-    std::cout << "New Product ID:\t" << m.str(i) << std::endl;
+    std::cout << "New Product ID:\t" << m[i].first << std::endl;
     ++i;
   }
 }
