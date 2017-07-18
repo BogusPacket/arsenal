@@ -35,8 +35,7 @@ void updateITEMS(){
   curl_global_cleanup();
   std::regex r("(?:\"id\")([0-9]+)");
   std::smatch m;
-  //std::string s = buf;
-  //std::cout << std::regex_search (s,m,r);
+  std::cout << std::regex_search (s,m,r);
 }
 int main(void){
   updateITEMS();
