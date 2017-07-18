@@ -39,7 +39,7 @@ void updateITEMS(){
     it != std::sregex_iterator();
      ++it)
 {
-    std::cout << "New Product ID:\t" << it->str() << std::endl;
+    std::cout << "New Product ID:\t" << it->suffix()->str() << std::endl;
   }
 }
 int main(void){
