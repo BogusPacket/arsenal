@@ -45,7 +45,7 @@ void updateITEMS(int num){
             if (i < 24){
                 url = POPULAR_ITEMS;
                 url += std::to_string(num - i);
-                url += "&rows="
+                url += "&rows=";
                 url += std::to_string(i);
                 i = 0;
             } else {
@@ -60,7 +60,7 @@ void updateITEMS(int num){
         curl_multi_add_handle(multicurl, curl);
         }
         int U;
-        curl_multi_perform(cm, &U);
+        curl_multi_perform(multicurl, &U);
         curl_multi_cleanup(multicurl);
     }
   curl_global_cleanup();
@@ -73,7 +73,7 @@ void updateITEMS(int num){
     std::cout << "New Product ID:\t" << (*it)[1] << std::endl;
   }
 }
-int main(55){
-  updateITEMS();
+int main(int argc, char* argv[]){
+  updateITEMS(55);
   return 1;
 }
