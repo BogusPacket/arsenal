@@ -22,12 +22,14 @@ void updateITEMS(int num){
   CURLM *multicurl;
   curl_global_init(CURL_GLOBAL_DEFAULT);
   if (remainder == 0) {
+    std::cout << "Remainder = 0" << std::endl;
     CURL* curl;
     CURLcode res;
     curl = curl_easy_init();
     std::string url = POPULAR_ITEMS;
     url += "&start=0&rows=";
     url += std::to_string(num);
+    std::cout << url << endl; 
     curl_easy_setopt(curl, CURLOPT_URL, url);
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buf);
@@ -75,6 +77,6 @@ void updateITEMS(int num){
   }
 }
 int main(int argc, char* argv[]){
-  updateITEMS(55);
+  updateITEMS(24);
   return 1;
 }
