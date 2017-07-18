@@ -38,8 +38,9 @@ void updateITEMS(){
   std::regex_search (buf,m,r);
   int i = 0;
   while (i < m.size()){
+    std::cout << i << std::endl;
     std::cout << "New Product ID:\t" << m.str(i) << std::endl;
-    i++;
+    ++i;
   }
 }
 int main(void){
