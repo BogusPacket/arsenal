@@ -42,7 +42,12 @@ void updateITEMS(int num){
     curl_easy_setopt(curl, CURLOPT_URL, url);
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buf);
-    CURL_PREP(curl);
+    #ifdef SKIP_PEER_VERIFICATION
+    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+    #endif
+    #ifdef SKIP_HOSTNAME_VERIFICATION
+    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+    #endif
     res = curl_easy_perform(curl);
     if(res != CURLE_OK){
         std::cout << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;
@@ -68,6 +73,12 @@ void updateITEMS(int num){
         }
         std::cout << url << std::endl;
         curl_easy_setopt(curl, CURLOPT_URL, url);
+        #ifdef SKIP_PEER_VERIFICATION
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+        #endif
+        #ifdef SKIP_HOSTNAME_VERIFICATION
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+        #endif
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buf);
         CURL_PREP(curl);
