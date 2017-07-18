@@ -37,7 +37,7 @@ void updateITEMS(){
   std::smatch m;
   std::regex_search (buf,m,r);
   int i = 0;
-  while (i < m.size()){
+  while (i < 20){
     std::cout << i << std::endl;
     std::cout << "New Product ID:\t" << m[i] << std::endl;
     ++i;
