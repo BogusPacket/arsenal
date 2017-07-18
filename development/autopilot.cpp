@@ -34,7 +34,7 @@ void updateITEMS(){
   curl_global_cleanup();
   std::regex r("id(.*)");
   std::smatch m;
-  std::regex_search (buf.c_str(),m,r);
+  std::regex_search (buf,m,r);
   std::cout << m.str(1);
   std::cout << m.size();
 }
