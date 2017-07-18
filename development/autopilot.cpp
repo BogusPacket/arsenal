@@ -30,6 +30,7 @@ void updateITEMS(){
   if(res != CURLE_OK){
     std::cout << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;
   }
+  std::cout << buf << std::endl;
   curl_easy_cleanup(curl);
   curl_global_cleanup();
   std::regex r("(?:\"id\")([0-9]+)");
