@@ -6,6 +6,15 @@
 #define G2A_BESTSELLERS 0x01
 #define DYN "&start=0&rows=12"
 
+private static inline void CURL_PREP(CURL* curl){
+    #ifdef SKIP_PEER_VERIFICATION
+    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+    #endif
+    #ifdef SKIP_HOSTNAME_VERIFICATION
+    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+    #endif
+    return;
+}
 static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *userp)
 {
     ((std::string*)userp)->append((char*)contents, size * nmemb);
@@ -33,6 +42,7 @@ void updateITEMS(int num){
     curl_easy_setopt(curl, CURLOPT_URL, url);
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buf);
+    CURL_PREP(curl);
     res = curl_easy_perform(curl);
     if(res != CURLE_OK){
         std::cout << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;
@@ -60,6 +70,7 @@ void updateITEMS(int num){
         curl_easy_setopt(curl, CURLOPT_URL, url);
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buf);
+        CURL_PREP(curl);
         curl_multi_add_handle(multicurl, curl);
         }
         int U;
