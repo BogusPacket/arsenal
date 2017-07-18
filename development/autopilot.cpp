@@ -35,9 +35,11 @@ void updateITEMS(){
   curl_global_cleanup();
   std::regex r("(?:\"id\":)(\\d+)");
   std::smatch m;
-  while(std::regex_search (buf.begin(), buf.end() ,m,r)){
-    for (auto x:m) std::cout << x << " ";
-    std::cout << "New Product ID:\t" << m[0] << std::endl;
+  for(auto it = std::sregex_iterator(buf.begin(), buf.end(), r);
+    it != std::sregex_iterator();
+     ++it)
+{
+    std::cout << "New Product ID:\t" << it[0] << std::endl;
   }
 }
 int main(void){
