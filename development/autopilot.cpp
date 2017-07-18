@@ -36,6 +36,7 @@ void updateITEMS(){
   std::regex r("(?:\"id\":)(\\d+)");
   std::smatch m;
   while(std::regex_search (buf,m,r)){
+    for (auto x:m) std::cout << x << " ";
     std::cout << "New Product ID:\t" << m[0] << std::endl;
   }
 }
