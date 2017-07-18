@@ -33,7 +33,7 @@ void updateITEMS(){
   }
   curl_easy_cleanup(curl);
   curl_global_cleanup();
-  std::regex r("\"id\":(\\d+)");
+  std::regex r("(?:\"id\":)(\\d+)");
   std::smatch m;
   std::regex_search (buf,m,r);
   int i = 0;
