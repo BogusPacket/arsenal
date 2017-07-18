@@ -38,8 +38,8 @@ void updateITEMS(int num){
     std::string url = POPULAR_ITEMS;
     url.append("0&rows=");
     url.append(std::to_string(num));
-    std::cout << url.c_str() << std::endl; 
-    curl_easy_setopt(curl, CURLOPT_URL, url);
+    std::cout << url << std::endl; 
+    curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buf);
     #ifdef SKIP_PEER_VERIFICATION
