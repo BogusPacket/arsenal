@@ -35,9 +35,8 @@ void updateITEMS(){
   std::regex r("\"id\":\\d+");
   std::smatch m;
   std::regex_search (buf.c_str(),m,r);
-  std::cout << m[1];
-  std::cout << m[2];
-  std::cout << m[3];
+  std::cout << m.str(1);
+  std::cout << m.size();
 }
 int main(void){
   updateITEMS();
