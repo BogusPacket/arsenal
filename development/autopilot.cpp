@@ -22,17 +22,17 @@ static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *use
 
 
 void updateITEMS(int num){
-  
+  std::string buf;
   int remainder = 0;
   if (!(num <= 24)){
     remainder = num % 24;
   }
-  CURL* curl;
-  CURLcode res;
+  CURLM *multicurl;
   curl_global_init(CURL_GLOBAL_DEFAULT);
-  curl = curl_easy_init();
-  std::string buf;
   if (remainder == 0) {
+    CURL* curl;
+    CURLcode res;
+    curl = curl_easy_init();
     std::string url = POPULAR_ITEMS;
     url += "&start=0&rows=";
     url += std::to_string(num);
@@ -45,17 +45,16 @@ void updateITEMS(int num){
     }
     curl_easy_cleanup(curl);
     } else {
+        CURLM *multicurl;
         int i = num;
         while (num){
+            CURL* curl =  curl_easy_init();
             std::string url;
             if (i < 24){
                 url = POPULAR_ITEMS;
                 url += std::to_string(num - i);
                 url += "&rows="
                 url += std::to_string(i);
-                curl_easy_setopt(curl, CURLOPT_URL, url);
-                curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
-                curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buf);
                 i = 0;
             } else {
                 url = POPULAR_ITEMS;
@@ -67,11 +66,11 @@ void updateITEMS(int num){
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buf);
         CURL_PREP(curl);
-        res = curl_easy_perform(curl);
-        if(res != CURLE_OK){
-            std::cout << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;
+        curl_multi_add_handle(multicurl, curl);
         }
-        curl_easy_cleanup(curl);
+        int U;
+        curl_multi_perform(cm, &U);
+        curl_multi_cleanup(multicurl);
     }
   curl_global_cleanup();
   std::regex r("(?:\"id\":)(\\d+)");
