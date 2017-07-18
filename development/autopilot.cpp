@@ -36,6 +36,7 @@ void updateITEMS(){
   std::regex r("(?:\"id\":)(\\d+)");
   std::smatch m;
   std::regex_search (buf,m,r);
+  std::cout << buf << std::endl;
   int i = 0;
   while (i < 20){
     std::cout << i << std::endl;
