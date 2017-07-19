@@ -1,6 +1,5 @@
 #include "converter.h"
-#include "arsenal.h"
-
+#include <sstream>
 
 unsigned int IPv4_n2h(unsigned int arg){
 	register unsigned char r4 = *((unsigned char*) &arg);

@@ -7,12 +7,12 @@
 #define COLOR_MAGENTA "\x1b[35m"
 #define COLOR_CYAN "\x1b[36m"
 #define COLOR_RESET "\x1b[0m"
-#define INFO_BANNER "\x1b[0m[\x1b[34m+\x1b[0m] "
-#define SUCCESS_BANNER "\x1b[0m[\x1b[32m+\x1b[0m] "
-#define ERROR_BANNER "\x1b[0m[\x1b[31m+\x1b[0m] "
-#include <bitset>
+#define INFO_B "\x1b[0m[\x1b[34m+\x1b[0m] "
+#define SUCCESS_B "\x1b[0m[\x1b[32m+\x1b[0m] "
+#define ERROR_B "\x1b[0m[\x1b[31m+\x1b[0m] "
+#include <string>
+#include <regex>
+#include <iterator>
 #include <iostream>
-#include <sstream>
-#include <cstdlib>
-#include <cstring>
+#include <curl/curl.h>
 #endif
