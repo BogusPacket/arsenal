@@ -67,7 +67,7 @@ void updateITEMS(int num){
         curl_easy_setopt(curl, CURLOPT_URL, url);
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buf);
-        CURL_PREP(curl)
+        CURL_PREP(curl);
         curl_multi_add_handle(multicurl, curl);
         }
         int U;
