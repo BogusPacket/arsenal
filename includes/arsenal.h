@@ -12,7 +12,9 @@
 #define ERROR_B "\x1b[0m[\x1b[31m+\x1b[0m] "
 #include <string>
 #include <regex>
-#include <iterator>
 #include <iostream>
+#include <iomanip>
+#include <vector>
+#include <iterator>
 #include <curl/curl.h>
 #endif

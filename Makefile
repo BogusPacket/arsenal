@@ -5,9 +5,8 @@ CPPCONN =-I/usr/lical/include/cppconn
 SQL_ARG=-lmysqlcppconn
 TESTS=-Itest/
 all:
-	g++ -c src/autopilot.cpp -o src/autopilot.so $(INC)
-	g++ -c src/converter.cpp -o src/converter.so $(INC)
-
+	g++ -c src/autopilot.cpp -o  src/autopilot.so $(INC)
+	
 mysql_test test/mysql.cpp:
 	g++ test/mysql.cpp $(INC) $(USR_INC) $(CPPCONN) $(SQL_ARG) -o mysql_test --std=c++11
 
