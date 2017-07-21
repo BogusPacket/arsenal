@@ -15,12 +15,9 @@
 #include <string>
 #include <regex>
 #include <iomanip>
-#include<cstdlib>
-#include<errno.h>
+#include <cstdlib>
+#include <errno.h>
 #include <vector>
 #include <iterator>
 #include <curl/curl.h>
-#include "network.h"
-#include "autopilot.h"
-#include "converter.h"
 #endif
