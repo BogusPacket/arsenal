@@ -5,6 +5,7 @@
 
 int main(int argc, char* argv[]){
   if (argv[1] == "g2a"){
+	  std::cout << "true";
     G2A a;
     a.updateITEMS(48);
     return 1;
