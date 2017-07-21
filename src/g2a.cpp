@@ -1,7 +1,8 @@
 #include "arsenal.h"
-#include "autopilot.h"
-Autopilot::Autopilot(){;}
-Autopilot::~Autopilot(){;}
+#include "g2a.h"
+
+G2A::G2A(){;}
+G2A::~G2A(){;}
 
 struct Item {
 	int id;
@@ -46,7 +47,7 @@ void CURL_PREP(CURL* curl, std::string& buf){
         #endif
 	return;}
 
-void Autopilot::updateITEMS(int num){
+void G2A::updateITEMS(int num){
 	curl_global_init(CURL_GLOBAL_DEFAULT);
 	if (num <= 24) {
 	while (1){
