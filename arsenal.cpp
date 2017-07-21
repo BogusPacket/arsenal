@@ -1,5 +1,5 @@
 #include "arsenal.h"
-#include "network.h"
+#include "socket.h"
 #include "g2a.h"
 #include "converter.h"
 
