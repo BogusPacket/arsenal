@@ -4,8 +4,6 @@
 #include "converter.h"
 
 int main(int argc, char* argv[]){
-	std::cout << argv[1] << std::endl
-		std::cout << argv[2] << std::endl
   if (argv[1] == "g2a"){
     G2A a;
     a.updateITEMS(48);
@@ -21,5 +19,6 @@ int main(int argc, char* argv[]){
 	  std::cout << "IPv4_i2s(addr) " << addr_s << std::endl;
 	  std::cout << "IPv4_i2s(switched_addr) == " << switched_addr_s << std::endl;
 	  return 1;
-  } 
+  }  else {std::cout << argv[1] << std::endl;
+		std::cout << argv[2] << std::endl;}
 }
