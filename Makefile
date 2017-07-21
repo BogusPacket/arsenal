@@ -5,14 +5,11 @@ CPPCONN =-I/usr/lical/include/cppconn
 SQL_ARG=-lmysqlcppconn
 TESTS=-Itest/
 all:
-	g++ -c src/g2a.cpp -o g2a.so $(INC) 
-	
-mysql_test test/mysql.cpp:
-	g++ test/mysql.cpp $(INC) $(USR_INC) $(CPPCONN) $(SQL_ARG) -o mysql_test --std=c++11
+	g++ -c src/g2a.cpp -o g2a.so $(INC) -L/usr/lib/x86_64-linux-gnu -lcurl
+	g++ -c src/converter.cpp -o converter.so $(INC)
+	g++ arsenal.cpp converter.so g2a.so -o arsenal $(INC) -L/usr/lib/x86_64-linux-gnu -lcurl
+install:
+	mv arsenal /usr/bin
 
-autopilot_src src/autopilot.cpp:
-	g++ -c src/autopilot.cpp $(INC) -o src/autopilot.o
-
-autopilot_test test/autopilot.cpp:
-	g++ test/autopilot.cpp src/autopilot.so -o autopilot $(INC) -L/usr/lib/x86_64-linux-gnu -lcurl
-
+arsenal arsenal.cpp:
+	g++ -c arsenal.cpp converter.so g2a.so $(INC) -o arsenal
