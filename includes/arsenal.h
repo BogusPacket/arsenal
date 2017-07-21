@@ -10,13 +10,17 @@
 #define INFO_B "\x1b[0m[\x1b[34m+\x1b[0m] "
 #define SUCCESS_B "\x1b[0m[\x1b[32m+\x1b[0m] "
 #define ERROR_B "\x1b[0m[\x1b[31m+\x1b[0m] "
+#include <bitset>
+#include <iostream>
 #include <string>
 #include <regex>
-#include <iostream>
 #include <iomanip>
+#include<cstdlib>
+#include<errno.h>
 #include <vector>
 #include <iterator>
 #include <curl/curl.h>
 #include "network.h"
 #include "autopilot.h"
+#include "converter.h"
 #endif
