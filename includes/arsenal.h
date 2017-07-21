@@ -17,4 +17,6 @@
 #include <vector>
 #include <iterator>
 #include <curl/curl.h>
+#include "network.h"
+#include "autopilot.h"
 #endif
