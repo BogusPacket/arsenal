@@ -14,7 +14,7 @@ for(std::vector<int>::size_type i = 0; i != v.size(); i++) {
 std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl;
 std::cout << COLOR_RED << "| "  << COLOR_MAGENTA << "PRODUCTID" << COLOR_YELLOW << ">\t" << COLOR_RESET << v[i].id << std::endl;
 std::cout << COLOR_RED << "| " << COLOR_MAGENTA << "NAME" << COLOR_YELLOW << ">\t\t" << COLOR_RESET << "\"" << v[i].name << "\"" << std::endl;
-std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl << std::endl;}}
+std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl;}}
 
 void item_regex(std::string& js, std::vector<struct Item>& v){
 		std::string buf = js;
