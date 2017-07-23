@@ -16,7 +16,8 @@ std::cout << COLOR_RED << "| "  << COLOR_MAGENTA << "PRODUCTID" << COLOR_YELLOW 
 std::cout << COLOR_RED << "| " << COLOR_MAGENTA << "NAME" << COLOR_YELLOW << ">\t\t" << COLOR_RESET << "\"" << v[i].name << "\"" << std::endl;
 std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl;}}
 
-void item_regex(std::string& js, std::vector<struct Item>& v){
+std::vector<struct Item> item_regex(std::string& js){
+		std::vector<struct Test> v;
 		std::string buf = js;
 		std::regex re("(?:\"id\":)([0-9]+)(?:,\"name\":\")([^\"]+)");
                 std::smatch m;
@@ -30,6 +31,7 @@ void item_regex(std::string& js, std::vector<struct Item>& v){
 			v.push_back(item);
 			buf = m.suffix();
         	};
+		return v;
 }
 
 size_t curl_callback(void *contents, size_t size, size_t nmemb, void *userp){
@@ -69,7 +71,7 @@ void G2A::updateITEMS(int num){
 		curl_global_cleanup();
 	}	} else {
         int i = 0;
-	std::vector<struct Item> v;
+	Arsenal::Set<std::vector<struct Item>> s
         while (i < num){
 		CURL* curl = curl_easy_init();
 		CURLcode res;
@@ -89,10 +91,9 @@ void G2A::updateITEMS(int num){
 		CURL_PREP(curl, buf);
         	res = curl_easy_perform(curl);
 		if(res != CURLE_OK){std::cout << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;}
-		item_regex(buf, v);
+		s.cat(item_regex(buf));
 		curl_easy_cleanup(curl);
 	}
-	print_item_vector(v);
 	curl_global_cleanup();
    }
 }
