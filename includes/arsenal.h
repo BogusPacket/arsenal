@@ -27,17 +27,21 @@ namespace Arsenal {
   private:
     vector<A> v;
     int checkVector(A a){
-    for(int x=0;x<v.size();++x){
-    int r=memcmp(&a,&v[x],sizeof(A));
-    if (r<0 || r>0){return 0;}}v.push_back(a);return 1;}
+      for(int x=0;x<v.size();++x){
+      int r=memcmp(&a,&v[x],sizeof(A));
+      if (r<0 || r>0){return 0;}}v.push_back(a);return 1;}
   public:
     Set(){;}
     Set(vector<A> vec){;}
     A operator[](int i){return v[i];}
     int push(A a){if(checkVector(a) != 1){return 0;}else{return 1;}}
     void cat(vector<A> a){for(int i=0; i < a.size(); ++i){checkVector(a[i]);}}
-    
-  };
+    void print(){for(int i = 0; i != v.size(); i++) {
+    std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl;
+    std::cout << COLOR_RED << "| "  << COLOR_MAGENTA << "PRODUCTID" << COLOR_YELLOW << ">\t" << COLOR_RESET << v[i].id << std::endl;
+    std::cout << COLOR_RED << "| " << COLOR_MAGENTA << "NAME" << COLOR_YELLOW << ">\t\t" << COLOR_RESET << "\"" << v[i].name << "\"" << std::endl;
+    std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl;}}}
+    };
 };
 
 #endif
