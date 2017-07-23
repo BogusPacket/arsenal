@@ -66,7 +66,7 @@ void G2A::updateITEMS(int num){
     		if(res != CURLE_OK){std::cout << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;}
   		int i = 1;
 		std::vector<struct Item> v;
-		item_regex(buf, v);
+		//item_regex(buf, v);
     		curl_easy_cleanup(curl);
 		curl_global_cleanup();
 	}	} else {
