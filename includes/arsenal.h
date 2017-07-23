@@ -36,13 +36,6 @@ namespace Arsenal {
     A operator[](int i){return v[i];}
     int push(A a){if(checkVector(a) != 1){return 0;}else{return 1;}}
     void cat(vector<A> a){for(int i=0; i < a.size(); ++i){checkVector(a[i]);}}
-    void print(){for(int i = 0; i != v.size(); i++) {
-    std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl;
-    std::cout << COLOR_RED << "| "  << COLOR_MAGENTA << "PRODUCTID" << COLOR_YELLOW << ">\t" << COLOR_RESET << v[i].id << std::endl;
-    std::cout << COLOR_RED << "| " << COLOR_MAGENTA << "NAME" << COLOR_YELLOW << ">\t\t" << COLOR_RESET << "\"" << v[i].name << "\"" << std::endl;
-    std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl;}
-    
-                }
   };
 };
 
