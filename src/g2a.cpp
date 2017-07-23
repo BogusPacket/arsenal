@@ -87,10 +87,10 @@ void G2A::updateITEMS(int num){
 		s.cat(item_regex(buf));
 		curl_easy_cleanup(curl);
 	}
-	for(i = 0; i < s.size(); ++i){
+	for(int x = 0; i < 20; ++x){
     std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl;
-    std::cout << COLOR_RED << "| "  << COLOR_MAGENTA << "PRODUCTID" << COLOR_YELLOW << ">\t" << COLOR_RESET << s[i].id << std::endl;
-    std::cout << COLOR_RED << "| " << COLOR_MAGENTA << "NAME" << COLOR_YELLOW << ">\t\t" << COLOR_RESET << "\"" << s[i].name << "\"" << std::endl;
+    std::cout << COLOR_RED << "| "  << COLOR_MAGENTA << "PRODUCTID" << COLOR_YELLOW << ">\t" << COLOR_RESET << s[x].id << std::endl;
+    std::cout << COLOR_RED << "| " << COLOR_MAGENTA << "NAME" << COLOR_YELLOW << ">\t\t" << COLOR_RESET << "\"" << s[x].name << "\"" << std::endl;
     std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl;}
 	curl_global_cleanup();
    }
