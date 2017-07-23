@@ -3,7 +3,7 @@
 #include "g2a.h"
 #include "converter.h"
 
-int main(int argc, char* argv[]){
+int main(int argc, char* argv[]) {
   if (strcmp(argv[1], "g2a") == 0){
     G2A a;
     a.updateITEMS(48);
@@ -20,4 +20,4 @@ int main(int argc, char* argv[]){
 	  std::cout << "IPv4_i2s(switched_addr) == " << switched_addr_s << std::endl;
 	  return 1;
   }
-}
+};
