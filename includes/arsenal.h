@@ -41,7 +41,8 @@ namespace Arsenal {
     std::cout << COLOR_RED << "| "  << COLOR_MAGENTA << "PRODUCTID" << COLOR_YELLOW << ">\t" << COLOR_RESET << v[i].id << std::endl;
     std::cout << COLOR_RED << "| " << COLOR_MAGENTA << "NAME" << COLOR_YELLOW << ">\t\t" << COLOR_RESET << "\"" << v[i].name << "\"" << std::endl;
     std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl;}
-    };
+    
+                };
 };
 
 #endif
