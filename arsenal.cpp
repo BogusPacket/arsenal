@@ -18,6 +18,6 @@ int main(int argc, char* argv[]) {
 	  std::string switched_addr_s = IPv4_i2s(switched_addr);
 	  std::cout << "IPv4_i2s(addr) " << addr_s << std::endl;
 	  std::cout << "IPv4_i2s(switched_addr) == " << switched_addr_s << std::endl;
-	  return 1;}}
+	  return 1;}}}
 
 
