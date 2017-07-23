@@ -17,7 +17,7 @@ std::cout << COLOR_RED << "| " << COLOR_MAGENTA << "NAME" << COLOR_YELLOW << ">\
 std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl;}}
 
 std::vector<struct Item> item_regex(std::string& js){
-		std::vector<struct Test> v;
+		std::vector<struct Item> v;
 		std::string buf = js;
 		std::regex re("(?:\"id\":)([0-9]+)(?:,\"name\":\")([^\"]+)");
                 std::smatch m;
