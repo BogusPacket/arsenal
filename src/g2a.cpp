@@ -71,7 +71,7 @@ void G2A::updateITEMS(int num){
 		curl_global_cleanup();
 	}	} else {
         int i = 0;
-	Arsenal::Set<std::vector<struct Item>> s
+	Arsenal::Set<std::vector<struct Item>> s;
         while (i < num){
 		CURL* curl = curl_easy_init();
 		CURLcode res;
