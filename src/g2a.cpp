@@ -89,6 +89,6 @@ void G2A::updateITEMS(int num){
 	}
 	curl_global_cleanup();
 	s.print();
-   }
+   }}
 }
 
