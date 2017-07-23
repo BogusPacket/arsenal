@@ -20,6 +20,7 @@
 #include <vector>
 #include <iterator>
 #include <curl/curl.h>
+using namespace std;
 namespace Arsenal {
   template <typename Arsenal> class Set;
   template <typename A> class Set<vector<A>> {
