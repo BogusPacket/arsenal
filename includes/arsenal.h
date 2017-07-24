@@ -34,7 +34,7 @@ using namespace std;
     Set(vector<A>& a){&v = &a;}
     A operator[](int i){return v[i];}
     int push(A& a){if(checkVector(a) != 1){return 0;}else{return 1;}}
-    void cat(vector<A>& a){for(int i=0; i < a.size(); ++i){checkVector(a[i]);}}
+    void cat(vector<A> a){for(int i=0; i < a.size(); ++i){checkVector(a[i]);}}
   };
 
 #endif
