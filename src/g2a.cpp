@@ -16,7 +16,7 @@ std::cout << COLOR_RED << "| "  << COLOR_MAGENTA << "PRODUCTID" << COLOR_YELLOW 
 std::cout << COLOR_RED << "| " << COLOR_MAGENTA << "NAME" << COLOR_YELLOW << ">\t\t" << COLOR_RESET << "\"" << v[i].name << "\"" << std::endl;
 std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl;}}
 
-void item_regex(std::string& js, Set& s){
+void item_regex(std::string& js, Set<struct Item>& s){
 		std::string buf = js;
 		std::regex re("(?:\"id\":)([0-9]+)(?:,\"name\":\")([^\"]+)");
                 std::smatch m;
@@ -69,7 +69,7 @@ void G2A::updateITEMS(int num){
 		curl_global_cleanup();
 	}	} else {
         int i = 0;
-	Set<std::vector<struct Item>> s;
+	Set<struct Item> s;
         while (i < num){
 		CURL* curl = curl_easy_init();
 		CURLcode res;
