@@ -89,7 +89,7 @@ void G2A::updateITEMS(int num){
 		CURL_PREP(curl, buf);
         	res = curl_easy_perform(curl);
 		if(res != CURLE_OK){std::cout << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;}
-		item_regex(buf, &s);
+		item_regex(buf, s);
 		curl_easy_cleanup(curl);
 	}
 		print_item_vector(s.v);
