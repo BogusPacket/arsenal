@@ -25,18 +25,18 @@ namespace Arsenal {
   template <typename Arsenal> class Set;
   template <typename A> class Set<vector<A>> {
   private:
-    vector<A> v;
     int checkVector(A a){
       for(int x=0;x<v.size();++x){
       int r=memcmp(&a,&v[x],sizeof(A));
       if (r == 0){return 0;}}v.push_back(a);return 1;}
   public:
+    vector<A> v;
     Set(){;}
     Set(vector<A> vec){;}
     A operator[](int i){return v[i];}
     int push(A a){if(checkVector(a) != 1){return 0;}else{return 1;}}
     void cat(vector<A> a){for(int i=0; i < a.size(); ++i){checkVector(a[i]);}}
-    size_t size(){return v.size();}
+    void size(){cout << v.size() << std::endl;}
   };
 };
 
