@@ -20,7 +20,7 @@ std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl;}}
 
 void item_regex(std::string& js, Set<struct Item>& s){
 		std::string buf = js;
-		std::regex re1("(?:\"id\":)([0-9]+)(?:,\"name\":\")([^\"]+)");
+		std::regex re1("(?:\"id\": )([0-9]+)(?:,\"name\":\")([^\"]+)");
 		std::regex re2("(\"minPrice\":)");
                 std::smatch m1;
                 int i = 1;
