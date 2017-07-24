@@ -28,7 +28,7 @@ void item_regex(std::string& js, Set<struct Item>& s){
                 {
 			Item item;
 			std::string::size_type sz;
-			item.id = std::stoi(m2[1], &sz);
+			item.id = std::stoi(m1[1], &sz);
 			item.name = m1[2];
 			buf = m1.suffix();
 			std::smatch m2;
