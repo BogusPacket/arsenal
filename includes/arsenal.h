@@ -30,7 +30,7 @@ namespace Arsenal {
       for(int x=0;x<v.size();++x){
       int r=memcmp(&a,&v[x],sizeof(A));
       cout << r << endl;
-      if (r<0 || r>0){return 0;}}v.push_back(a);return 1;}
+      if (r == 0){return 0;}}v.push_back(a);return 1;}
   public:
     Set(){;}
     Set(vector<A> vec){;}
