@@ -22,7 +22,7 @@
 #include <curl/curl.h>
 using namespace std;
   template <typename Arsenal> class Set;
-  template <typename A> class Set<vector<A>> {
+  template <typename A> class Set<A> {
   private:
     int checkVector(A& a){
       for(int x=0;x<v.size();++x){
@@ -31,7 +31,7 @@ using namespace std;
   public:
     vector<A> v;
     Set(){;}
-    Set(vector<A>& a){&v = &a;}
+    Set(A& a){v.push_back(a);}
     A operator[](int i){return v[i];}
     int push(A& a){if(checkVector(a) != 1){return 0;}else{return 1;}}
     void cat(vector<A> a){for(int i=0; i < a.size(); ++i){checkVector(a[i]);}}
