@@ -9,6 +9,13 @@ struct Item {
 	std::string name;
 };
 
+inline void print_item_vector(std::vector<struct Item>& v){
+for(std::vector<int>::size_type i = 0; i != v.size(); i++) {
+std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl;
+std::cout << COLOR_RED << "| "  << COLOR_MAGENTA << "PRODUCTID" << COLOR_YELLOW << ">\t" << COLOR_RESET << v[i].id << std::endl;
+std::cout << COLOR_RED << "| " << COLOR_MAGENTA << "NAME" << COLOR_YELLOW << ">\t\t" << COLOR_RESET << "\"" << v[i].name << "\"" << std::endl;
+std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl;}}
+
 std::vector<struct Item> item_regex(std::string& js){
 		std::vector<struct Item> v;
 		std::string buf = js;
@@ -86,9 +93,8 @@ void G2A::updateITEMS(int num){
 		if(res != CURLE_OK){std::cout << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;}
 		s.cat(item_regex(buf));
 		curl_easy_cleanup(curl);
-		}
-		std::cout << s[1].id << std::endl;
-		std::cout << s[2].id << std::endl;
+	}
+		print_item_vector(&s.v);
 	}
 }
 
