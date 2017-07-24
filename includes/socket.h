@@ -5,15 +5,16 @@
 #include<netinet/ip.h>
 #endif
 
-/*template<char const P> class Socket;
+template<char const P> class Socket;
 template<>
 class Socket<IPPROTO_UDP> {
   private:
     int fd;
     char datagram[4096];
-  public:
+
+public:
     Socket(){
       fd = socket (PF_INET, SOCK_RAW, IPPROTO_UDP);
     }
 };
-*/
+
