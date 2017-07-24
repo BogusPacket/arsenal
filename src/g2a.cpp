@@ -35,7 +35,7 @@ void item_regex(std::string& js, Set<struct Item>& s){
 			std::regex_search(buf, m2, re2);
 			item.price = m2[1];
 			buf = m2.suffix();
-			s.push(m2);
+			s.push(item);
         	};
 }
 
