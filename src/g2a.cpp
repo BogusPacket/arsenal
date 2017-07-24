@@ -64,7 +64,7 @@ void G2A::updateITEMS(int num){
 		curl_global_cleanup();
 	}	} else {
         int i = 0;
-	Arsenal::Set<std::vector<struct Item>> s;
+	Set<std::vector<struct Item>> s;
         while (i < num){
 		CURL* curl = curl_easy_init();
 		CURLcode res;
@@ -86,7 +86,6 @@ void G2A::updateITEMS(int num){
 		if(res != CURLE_OK){std::cout << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;}
 		s.cat(item_regex(buf));
 		curl_easy_cleanup(curl);
-		s.size();
 	}
 }
 
