@@ -7,7 +7,7 @@ G2A::~G2A(){;}
 struct Item {
 	int id;
 	std::string name;
-	std::string price
+	std::string price;
 };
 
 inline void print_item_vector(std::vector<struct Item>& v){
@@ -21,18 +21,18 @@ std::cout << COLOR_RED << "+" << COLOR_RESET << std::endl;}}
 void item_regex(std::string& js, Set<struct Item>& s){
 		std::string buf = js;
 		std::regex re1("(?:\"id\":)([0-9]+)(?:,\"name\":\")([^\"]+)");
-		std::regex re2("(?:\"minPrice\":)([0-9]+\.[0-9]+)");
+		std::regex re2("(?:\"minPrice\":)([0-9]+.[0-9]+)");
                 std::smatch m1;
                 int i = 1;
                 while (std::regex_search(buf, m1, re1))
                 {
 			Item item;
 			std::string::size_type sz;
-			item.id = std::stoi(1m[1], &sz);
+			item.id = std::stoi(m2[1], &sz);
 			item.name = m1[2];
 			buf = m1.suffix();
 			std::smatch m2;
-			std::regex_search(buf, m2, re1);
+			std::regex_search(buf, m2, re2);
 			item.price = m2[1];
 			buf = m2.suffix();
 			s.push(m2);
