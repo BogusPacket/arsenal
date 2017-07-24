@@ -21,8 +21,7 @@
 #include <iterator>
 #include <curl/curl.h>
 using namespace std;
-  template <typename Arsenal> class Set;
-  template <typename A> class Set<A> {
+  template <typename A> class Set {
   private:
     int checkVector(A& a){
       for(int x=0;x<v.size();++x){
