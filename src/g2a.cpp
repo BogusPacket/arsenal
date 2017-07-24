@@ -94,7 +94,7 @@ void G2A::updateITEMS(int num){
 		s.cat(item_regex(buf));
 		curl_easy_cleanup(curl);
 	}
-		print_item_vector(&s.v);
+		print_item_vector(s.v);
 	}
 }
 
