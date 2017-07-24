@@ -87,8 +87,8 @@ void G2A::updateITEMS(int num){
 		s.cat(item_regex(buf));
 		curl_easy_cleanup(curl);
 		}
-		std::cout << s.v[1].id;
-		std::cout << s.v[2].id;
+		std::cout << s[1].id << std::endl;
+		std::cout << s[2].id << std::endl;
 	}
 }
 
