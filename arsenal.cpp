@@ -2,7 +2,7 @@
 #include "socket.h"
 #include "g2a.h"
 #include "converter.h"
-#define TCP 0x01
+
 
 int main(int argc, char* argv[]) {
   if (strcmp(argv[1], "g2a") == 0){
