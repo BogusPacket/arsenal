@@ -3,6 +3,7 @@
 #include<sys/socket.h>
 #include<netinet/tcp.h>   
 #include<netinet/ip.h>
+#include <arpa/inet.h>
 #define TCP 0x01
 
 template<char const P> class Socket;
