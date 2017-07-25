@@ -3,6 +3,7 @@
 #include<sys/socket.h>
 #include<netinet/tcp.h>   
 #include<netinet/ip.h>
+#define TCP 0x01
 
 template<char const P> class Socket;
 template<>
@@ -12,7 +13,7 @@ class Socket<TCP> {
     char datagram[4096];
     struct sockaddr_in server;
 public:
-      template <class D, class P> Socket(D dst, P port){
+    template <class D, class P> Socket(D dst, P port){
       fd = socket (AF_INET, SOCK_STREAM, IPPROTO_TCP);
       server.sin_addr.s_addr=inet_addr(dst);
       server.sin_family=AF_INET;
