@@ -20,7 +20,7 @@ uint32_t switched_addr = IPv4_n2h(addr);
 	  std::cout << "IPv4_i2s(switched_addr) == " << switched_addr_s << std::endl;
 	  }
 else if (strcmp(argv[1], "socket") == 0){
-	Socket<TCP> s("192.168.0.1", 80);
+	Socket<TCP> s("localhost", 22);
 	
 }
 return 1;}
