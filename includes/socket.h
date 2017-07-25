@@ -28,7 +28,7 @@ public:
     template<class D> void setDst(D dst){server.sin_addr.s_addr=inet_addr(dst);}
     char* recieve(char* buf, size_t max){
       int bytesRecieved = 0, totalBytesRecieved = 0;
-      while (!((bytesRecieved=recv(sock, buf, 65535))<=0)){totalBytesRecieved += bytesRecieved;}}
+      while (!((bytesRecieved=recv(sock, buf, 65535, MSG_DONTWAIT))<=0)){totalBytesRecieved += bytesRecieved;}}
 };
 
 #endif
