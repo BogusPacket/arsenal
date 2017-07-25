@@ -5,6 +5,8 @@
 #include<netinet/ip.h>
 #include <arpa/inet.h>
 #define TCP 0x01
+#define UDP 0x02
+
 
 template<char const P> class Socket;
 template<>
@@ -23,6 +25,9 @@ public:
     }
     void setPort(int port){server.sin_port=htons(port);}
     template<class D> void setDst(D dst){server.sin_addr.s_addr=inet_addr(dst);}
+    char* recv(char* buf, size_t max){
+      int bytesReceived = 0, totalBytesRecieved = 0;
+      while (!((bytesRecieved=fd.recv(buf, 65535))<=0)){totalBytesRecieved += bytesRecieved;}}
 };
 
 #endif
