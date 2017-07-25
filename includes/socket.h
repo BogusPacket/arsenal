@@ -13,15 +13,15 @@ class Socket<TCP> {
     char datagram[4096];
     struct sockaddr_in server;
 public:
-    template <class D, class P> Socket(D dst, P port){
+    template <class D> Socket(D dst, int port){
       fd = socket (AF_INET, SOCK_STREAM, IPPROTO_TCP);
       server.sin_addr.s_addr=inet_addr(dst);
       server.sin_family=AF_INET;
       server.sin_port=htons(port);
       connect(fd , (struct sockaddr *)&server , sizeof(server));
     }
-    template<class P> void setPort(P port){server.sin_port=htons(port);}
-    template<class P> void setDst(D dst){server.sin_addr.s_addr=inet_addr(dst);}
+    void setPort(int port){server.sin_port=htons(port);}
+    template<class D> void setDst(D dst){server.sin_addr.s_addr=inet_addr(dst);}
 };
 
 #endif
