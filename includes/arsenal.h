@@ -10,6 +10,8 @@
 #define INFO_B "\x1b[0m[\x1b[34m+\x1b[0m] "
 #define SUCCESS_B "\x1b[0m[\x1b[32m+\x1b[0m] "
 #define ERROR_B "\x1b[0m[\x1b[31m+\x1b[0m] "
+#define ARSENAL_G2A 0x01
+#define ARSENAL_SOCKET 0x02
 #include <bitset>
 #include <iostream>
 #include <string>
@@ -20,12 +22,19 @@
 #include <vector>
 #include <iterator>
 #include <curl/curl.h>
+
 class Arsenal {
   protected:
-    template<typename X> void err(X x){std::cout << x << std::endl;}
-};
+    int id;
+    template<typename S> void print(S s);
+    template<typename X> void err(X x);
+    template<typename I> void info(I i);
+    template<typename S> void success(S s);};
+template<> void print(I i){std::cout << i << std::endl;}
+template<> void err(X x){std::cout << ERROR_B << s << std::endl;}
+template<> void info(I i){std::cout << INFO_B << s << std::endl;}
+template<> void success(S s){std::cout << SUCCESS_B << s << std::endl;}
 using namespace std;
-
   template <typename A> class Set : protected Arsenal {
   private:
     int checkVector(A& a){
