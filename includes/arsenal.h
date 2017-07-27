@@ -20,8 +20,13 @@
 #include <vector>
 #include <iterator>
 #include <curl/curl.h>
+class Arsenal {
+  protected:
+    template<typename X> void err(X x){std::cout << x << std::endl;}
+};
 using namespace std;
-  template <typename A> class Set {
+
+  template <typename A> class Set : protected Arsenal {
   private:
     int checkVector(A& a){
       for(int x=0;x<v.size();++x){
