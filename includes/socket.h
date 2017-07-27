@@ -8,9 +8,9 @@
 #define UDP 0x02
 
 
-template<char const P> class Socket;
+template<char const P> class Socket : protected Arsenal;
 template<>
-class Socket<TCP> {
+class Socket<TCP> : protected Arsenal {
   private:
     int sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     char datagram[4096];
