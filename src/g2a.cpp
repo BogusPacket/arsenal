@@ -30,6 +30,7 @@ void item_regex(std::string& js, Set<struct Item>& s){
 			std::string::size_type sz;
 			item.id = std::stoi(m1[1], &sz);
 			item.name = m1[2];
+			std::cout << item.name << std::endl;
 			buf = m1.suffix();
 			std::smatch m2;
 			std::regex_search(buf, m2, re2);
