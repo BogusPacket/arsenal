@@ -8,7 +8,7 @@
 #define UDP 0x02
 
 
-template<char const P> class Socket : protected Arsenal;
+template<char const P> class Socket;
 template<>
 class Socket<TCP> : protected Arsenal {
   private:
