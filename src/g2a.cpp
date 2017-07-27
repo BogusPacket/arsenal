@@ -93,9 +93,11 @@ void G2A::updateITEMS(int num){
                                 url += std::to_string(i);
                                 url += "&rows=24";
                                 i += 24;}
+		std::cout << "url" << std::endl;
                 curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
 		CURL_PREP(curl, buf);
         	res = curl_easy_perform(curl);
+		std::cout << "perform" << std::endl;
 		if(res != CURLE_OK){std::cout << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;}
 		item_regex(buf, s);
 		curl_easy_cleanup(curl);
