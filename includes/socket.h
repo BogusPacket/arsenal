@@ -5,7 +5,7 @@
 class TCP;
 
 template<char const P> class Socket : protected Arsenal {
-  private:
+  protected:
     int sock;
     char datagram[4096];
     struct sockaddr_in server;
