@@ -25,7 +25,7 @@ public:
   UDP(){server.sin_family=AF_INET;
         this->sock = socket(AF_INET, SOCK_DGRAM, 0);}
         template <class Msg> int SEND(Msg m, int length){return sendto(this->sock, m, length, 0, (sockaddr*)&this->server, sizeof(this->server));}
-        template <class Buf> void RECV(Buf buf, size_t size){socklen_t* fromlen = sizeof(sockaddr); ssize_t i = recvfrom(this->sock, buf, size, 0, (sockaddr*)&this->server, &fromlen);}
+        void RECV(void* buf, size_t size){socklen_t* fromlen = sizeof(sockaddr); ssize_t i = recvfrom(this->sock, buf, size, 0, (sockaddr*)&this->server, &fromlen);}
 };
 
 class TCP : public Socket<TCP> {
