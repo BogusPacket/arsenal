@@ -11,7 +11,7 @@ template<char const P> class Socket : protected Arsenal {
     struct sockaddr_in server;
   public:
       void setPort(int port){server.sin_port=htons(port);}
-      Socket(){P p = this; return p}
+      Socket(){P p = this;}
 };
 
 class TCP : public Socket<tcp> {
