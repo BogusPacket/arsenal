@@ -23,7 +23,8 @@ class UDP : public Socket<UDP> {
 public:
   UDP(){server.sin_family=AF_INET;
         this->sock = socket(AF_INET, SOCK_DGRAM, 0);}
-  template <class Msg> int SEND(Msg m, int length){return sendto(this->sock, (const char*) m, length, 0, (sockaddr*)&this->server, sizeof(this->server));}
+        template <class Msg> int SEND(Msg m, int length){return sendto(this->sock, (const char*) m, length, 0, (sockaddr*)&this->server, sizeof(this->server));}
+
 };
 
 class TCP : public Socket<TCP> {
