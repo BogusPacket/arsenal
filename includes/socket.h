@@ -23,7 +23,7 @@ public:
     template<class Buf> int recieve(Buf* buf, size_t max);
 };
 
-template<typename T> template<class Buf> int Socket<T>::recieve(Buf* buf, size_t max){
+template<typename T> template<class Buf> int Socket<char const>::recieve(Buf* buf, size_t max){
   int bytesRecieved = 0, totalBytesRecieved = 0;
   while (!((bytesRecieved=recv(sock, buf, 65535, MSG_DONTWAIT))<=0)){totalBytesRecieved += bytesRecieved;}}
 #endif
