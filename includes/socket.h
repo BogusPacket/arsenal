@@ -1,9 +1,6 @@
 #ifndef SOCKET_H
 #define SOCKET_H
-#include<sys/socket.h>
-#include<netinet/tcp.h>   
-#include<netinet/ip.h>
-#include <arpa/inet.h>
+#include "arsenal.h"
 #define TCP 0x01
 #define UDP 0x02
 
