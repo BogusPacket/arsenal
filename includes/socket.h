@@ -10,7 +10,7 @@ template<class P> class Socket : protected Arsenal {
     struct sockaddr_in server;
   public:
       void dport(int port){server.sin_port=htons(port);}
-      int CONNECT(){return connect(sock , (struct sockaddr *)&server , sizeof(server))};
+      int CONNECT(){return connect(sock , (struct sockaddr *)&server , sizeof(server));};
       template <class Dst> void dst(Dst d){server.sin_addr.s_addr=inet_addr(dst);}
       Socket<P>(){P p;}
 };
