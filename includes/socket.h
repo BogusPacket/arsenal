@@ -22,7 +22,7 @@ public:
     template<class Dst> void setDst(Dst dst){server.sin_addr.s_addr=inet_addr(dst);}
     template<class Buf> int recieve(Buf* buf, size_t max);
 };
-template<> template<class Buf> int Socket<P>::recieve(Buf* buf, size_t max){
+template<> template<class Buf> int Socket<const char>::recieve(Buf* buf, size_t max){
   int bytesRecieved = 0, totalBytesRecieved = 0;
   while (!((bytesRecieved=recv(sock, buf, 65535, MSG_DONTWAIT))<=0)){totalBytesRecieved += bytesRecieved;}}
 #endif
