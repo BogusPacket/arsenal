@@ -16,6 +16,8 @@ else if (strcmp(argv[1], "socket") == 0){
 	sock.dport(53);
 	sock.LISTEN((const char*)"127.0.0.1");
 	sock.SEND("tcp", 4);
+	std::string buf;
+	sock.RECV(buf.c_str(), 65535);
 	
 	
 }
