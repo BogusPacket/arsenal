@@ -2,17 +2,27 @@
 #define SOCKET_H
 #include "arsenal.h"
 class TCP;
+class UDP;
 
 template<class P> class Socket : protected Arsenal {
   protected:
     int sock;
     char datagram[4096];
     struct sockaddr_in server;
+    struct sockaddr_in b;
   public:
       void dport(int port){server.sin_port=htons(port);}
       int CONNECT(){return connect(sock , (struct sockaddr *)&server , sizeof(server));};
       template <class Dst> void dst(Dst d){server.sin_addr.s_addr=inet_addr(dst);}
-      Socket<P>(){;}
+      template <class Src> int listen(Src s){return bind(sock, (sockaddr*)&b, sizeof(b));;}
+      template <class Src> int listen(Src s, int port){b.sin_port=htons(port);}
+      Socket<P>(){b = {};}
+};
+
+class UDP : public Socket<UDP> {
+public:
+  UDP(){server.sin_family=AF_INET;
+        this->sock = socket(AF_INET, SOCK_DGRAM, 0);}
 };
 
 class TCP : public Socket<TCP> {
