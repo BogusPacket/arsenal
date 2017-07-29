@@ -16,7 +16,7 @@ template<class P> class Socket : protected Arsenal {
       template <class Dst> void dst(Dst d){server.sin_addr.s_addr=inet_addr(dst);}
       template <class Src> int LISTEN(Src s){return bind(sock, (sockaddr*)&b, sizeof(b));;}
       template <class Src> int LISTEN(Src s, int port){b.sin_port=htons(port);}
-      template<class Msg> SEND(Msg m, int length){return sendto(this->sock, (const char*) m, length, 0, (sockaddr*)&this->server, sizeof(this->server));}
+      template <class Msg> SEND(Msg m, int length){return sendto(this->sock, (const char*) m, length, 0, (sockaddr*)&this->server, sizeof(this->server));}
       Socket<P>(){b = {};}
 };
 
