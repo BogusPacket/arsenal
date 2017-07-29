@@ -4,14 +4,15 @@
 #define tcp 0x01
 class TCP;
 
-template<char const P> class Socket : protected Arsenal {
+template<class P> class Socket : protected Arsenal {
   protected:
+    TCP p;
     int sock;
     char datagram[4096];
     struct sockaddr_in server;
   public:
       void setPort(int port){server.sin_port=htons(port);}
-      Socket(){P p = this;}
+      Socket(){p = this;}
 };
 
 class TCP : public Socket<tcp> {
