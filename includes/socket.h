@@ -1,12 +1,11 @@
 #ifndef SOCKET_H
 #define SOCKET_H
 #include "arsenal.h"
-#define tcp 0x01
 class TCP;
-
+#define tcp TCP
 template<class P> class Socket : protected Arsenal {
   protected:
-    TCP p;
+    P p;
     int sock;
     char datagram[4096];
     struct sockaddr_in server;
