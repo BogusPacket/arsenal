@@ -18,8 +18,4 @@ class TCP : public Socket<tcp> {
   TCP(){this->sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
         this->server.sin_family=AF_INET;};
 };
-
-template<TCP> class Socket : protected Arsenal {
-  
-}
 #endif
