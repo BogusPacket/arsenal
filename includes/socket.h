@@ -11,11 +11,15 @@ template<char const P> class Socket : protected Arsenal {
     struct sockaddr_in server;
   public:
       void setPort(int port){server.sin_port=htons(port);}
-      Socket(){;}
+      Socket(){P p = this; return p}
 };
 
 class TCP : public Socket<tcp> {
   TCP(){this->sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
         this->server.sin_family=AF_INET;};
 };
+
+template<TCP> class Socket : protected Arsenal {
+  
+}
 #endif
