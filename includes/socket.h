@@ -13,7 +13,7 @@ template<class P> class Socket : protected Arsenal {
   public:
       void dport(int port){server.sin_port=htons(port);}
       int CONNECT(){return connect(sock , (struct sockaddr *)&server , sizeof(server));};
-      template <class Dst> inline void dst(Dst d){server.sin_addr.s_addr=inet_addr(dst);}
+      template <class Dst> inline void dst(Dst d){server.sin_addr.s_addr=inet_addr(d);}
       template <class Src> int LISTEN(Src s){return bind(sock, (sockaddr*)&b, sizeof(b));}
       template <class Src> int LISTEN(Src s, int port){b.sin_port=htons(port); return bind(sock, (sockaddr*)&b, sizeof(b));}
       Socket<P>(){b = {};}
