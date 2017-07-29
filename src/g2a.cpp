@@ -1,6 +1,7 @@
 #include "arsenal.h"
 #include "g2a.h"
 
+
 G2A::G2A(){;}
 G2A::~G2A(){;}
 
