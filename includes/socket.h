@@ -1,11 +1,10 @@
 #ifndef SOCKET_H
 #define SOCKET_H
 #include "arsenal.h"
+#define tcp 0x01
+class TCP;
 
-template class TCP;
-template class UDP;
-
-template<class P> class Socket : protected Arsenal {
+template<char const P> class Socket : protected Arsenal {
   private:
     int sock;
     char datagram[4096];
@@ -15,7 +14,7 @@ template<class P> class Socket : protected Arsenal {
       Socket(){;}
 };
 
-template<> class TCP : public Socket<TCP> {
+template<> class TCP : public Socket<tcp> {
   TCP(){this->sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
         this->server.sin_family=AF_INET;};
 };
