@@ -1,7 +1,8 @@
 #ifndef SOCKET_H
 #define SOCKET_H
 #include "arsenal.h"
-class TCP;
+#define TCP Tcp
+
 template<class P> class Socket : protected Arsenal {
   protected:
     P p;
@@ -13,7 +14,7 @@ template<class P> class Socket : protected Arsenal {
       Socket(){p = this;}
 };
 
-class TCP : public Socket<TCP> {
+class Tcp : public Socket<TCP> {
   TCP(){this->sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
         this->server.sin_family=AF_INET;};
 };
