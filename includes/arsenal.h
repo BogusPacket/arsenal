@@ -34,10 +34,11 @@ class Arsenal {
     template<typename X> void err(X x);
     template<typename I> void info(I i);
     template<typename S> void success(S s);};
-template<> void print(I i){std::cout << i << std::endl;}
-template<> void err(X x){std::cout << ERROR_B << s << std::endl;}
-template<> void info(I i){std::cout << INFO_B << s << std::endl;}
-template<> void success(S s){std::cout << SUCCESS_B << s << std::endl;}
+template<> void Arsenal::print(I i){std::cout << i << std::endl;}
+template<> void Arsenal::err(X x){std::cout << ERROR_B << s << std::endl;}
+template<> void Arsenal::info(I i){std::cout << INFO_B << s << std::endl;}
+template<> void Arsenal::success(S s){std::cout << SUCCESS_B << s << std::endl;}
+
 using namespace std;
   template <typename A> class Set : protected Arsenal {
   private:
