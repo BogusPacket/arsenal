@@ -12,17 +12,18 @@ class Socket : protected Arsenal {
     char datagram[4096];
     struct sockaddr_in server;
 public:
-      template <char const Type, class Dst> Socket<Type t>(Dst dst, int port){
+      template <char const Type, class Dst> Socket<Type t>(Dst dst, int port);
+      void setPort(int port){server.sin_port=htons(port);}
+      template<class Dst> void setDst(Dst dst){server.sin_addr.s_addr=inet_addr(dst);}
+      template<class Buf> int recieve(Buf* buf, size_t max){
+      int bytesRecieved = 0, totalBytesRecieved = 0;
+      while (!((bytesRecieved=recv(sock, buf, 65535, MSG_DONTWAIT))<=0)){totalBytesRecieved += bytesRecieved;}}
+};
+  template<class Dst> Socket::Socket<TCP>(Dst dst, int port){
       server.sin_addr.s_addr=inet_addr(dst);
       server.sin_port=htons(port);
       server.sin_family=AF_INET;
-      connect(sock , (struct sockaddr *)&server , sizeof(server));} 
-    void setPort(int port){server.sin_port=htons(port);}
-    template<class Dst> void setDst(Dst dst){server.sin_addr.s_addr=inet_addr(dst);}
-    template<class Buf> int recieve(Buf* buf, size_t max){
-  int bytesRecieved = 0, totalBytesRecieved = 0;
-  while (!((bytesRecieved=recv(sock, buf, 65535, MSG_DONTWAIT))<=0)){totalBytesRecieved += bytesRecieved;}}
-};
-
+      connect(sock , (struct sockaddr *)&server , sizeof(server));
+  }
 
 #endif
