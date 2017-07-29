@@ -9,7 +9,9 @@ template<class P> class Socket : protected Arsenal {
     char datagram[4096];
     struct sockaddr_in server;
   public:
-      void setPort(int port){server.sin_port=htons(port);}
+      void dport(int port){server.sin_port=htons(port);}
+      int CONNECT(){return connect(sock , (struct sockaddr *)&server , sizeof(server))};
+      template <class Dst> void dst(Dst d){server.sin_addr.s_addr=inet_addr(dst);}
       Socket<P>(){P p;}
 };
 
