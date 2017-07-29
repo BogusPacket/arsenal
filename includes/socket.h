@@ -20,9 +20,9 @@ public:
       connect(sock , (struct sockaddr *)&server , sizeof(server));} 
     void setPort(int port){server.sin_port=htons(port);}
     template<class Dst> void setDst(Dst dst){server.sin_addr.s_addr=inet_addr(dst);}
-    template<class Buf> int recieve(Buf* buf, size_t max){
-      int bytesRecieved = 0, totalBytesRecieved = 0;
-      while (!((bytesRecieved=recv(sock, buf, 65535, MSG_DONTWAIT))<=0)){totalBytesRecieved += bytesRecieved;}}
+    template<class Buf> int recieve(Buf* buf, size_t max);
     };
-
+template<class Buf> int Socket::recieve(Buf* buf, size_t max){
+  int bytesRecieved = 0, totalBytesRecieved = 0;
+  while (!((bytesRecieved=recv(sock, buf, 65535, MSG_DONTWAIT))<=0)){totalBytesRecieved += bytesRecieved;}}
 #endif
