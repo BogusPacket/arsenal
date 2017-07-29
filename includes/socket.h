@@ -2,8 +2,8 @@
 #define SOCKET_H
 #include "arsenal.h"
 
-class TCP;
-class UDP;
+template class TCP;
+template class UDP;
 
 template<class P> class Socket : protected Arsenal {
   private:
