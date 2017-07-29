@@ -15,6 +15,8 @@ else if (strcmp(argv[1], "socket") == 0){
 	sock.dst("8.8.8.8");
 	sock.dport(53);
 	sock.LISTEN((const char*)"127.0.0.1");
+	sock.SEND("tcp", 4);
+	
 	
 }
 return 1;}
