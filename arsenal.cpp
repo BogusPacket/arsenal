@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
   }
   
 else if (strcmp(argv[1], "socket") == 0){
-	Socket<TCP> s("localhost", 22);
+	Socket<tcp> s("localhost", 22);
 	
 }
 return 1;}
