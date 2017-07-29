@@ -14,7 +14,7 @@ template<char const P> class Socket : protected Arsenal {
       Socket(){;}
 };
 
-class TCP : public Socket<TCP> {
+class TCP : public Socket<tcp> {
   TCP(){this->sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
         this->server.sin_family=AF_INET;};
 };
