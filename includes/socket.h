@@ -16,6 +16,7 @@ template<class P> class Socket : protected Arsenal {
       template <class Dst> void dst(Dst d){server.sin_addr.s_addr=inet_addr(dst);}
       template <class Src> int LISTEN(Src s){return bind(sock, (sockaddr*)&b, sizeof(b));;}
       template <class Src> int LISTEN(Src s, int port){b.sin_port=htons(port);}
+      template<class Msg> SEND(Msg m, int length){return sendto(this->sock, (const char*) m, length, 0, (sockaddr*)&this->server, sizeof(this->server));}
       Socket<P>(){b = {};}
 };
 
@@ -23,7 +24,7 @@ class UDP : public Socket<UDP> {
 public:
   UDP(){server.sin_family=AF_INET;
         this->sock = socket(AF_INET, SOCK_DGRAM, 0);}
-  template<class Msg> SEND(Msg m, int length){return sendto(this->sock, (const char*) m, length, 0, (sockaddr*)&this->server, sizeof(this->server));}
+ 
 };
 
 class TCP : public Socket<TCP> {
