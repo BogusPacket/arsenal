@@ -21,7 +21,9 @@ else if (strcmp(argv[1], "socket") == 0){
 	struct DNS_HEADER* dns = (struct DNS_HEADER*) &buf;
 	cout << dns->id << endl;
 	cout << dns->ans_count << endl;
-	
+	struct DNS_HEADER* dns2 = (struct DNS_HEADER*) DNS_QUERY;
+	cout << dns2->id << endl;
+	cout << dns2->ans_count << endl;
 }
 return 1;}
 /*else if (strcmp(argv[1], "converter") == 0){
