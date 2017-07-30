@@ -16,11 +16,11 @@ else if (strcmp(argv[1], "socket") == 0){
 	sock.dport(53);
 	sock.LISTEN("162.213.37.166", 53);
 	sock.SEND(DNS_QUERY, sizeof(DNS_QUERY));
-	char buf[65535];
-	sock.RECV(buf, 65535);
-	for (int i = 0; i < 700; i++)
+	char buf[39];
+	sock.RECV(buf, 39);
+	for (int i = 0; i < 39; i++)
 	{
-    		printf("%x\t", buf[i]);
+    		printf("%c\t", buf[i]);
 	}
 	
 	
