@@ -18,7 +18,10 @@ else if (strcmp(argv[1], "socket") == 0){
 	sock.SEND(DNS_QUERY, sizeof(DNS_QUERY));
 	char buf[39];
 	sock.RECV(buf, 39);
-	printf("%04x", buf);
+	for (int i = 0; i < 39; i++)
+	{
+    		printf("%02X", buf[i]);
+	}
 	
 	
 }
