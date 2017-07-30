@@ -18,11 +18,9 @@ else if (strcmp(argv[1], "socket") == 0){
 	sock.SEND(DNS_QUERY, sizeof(DNS_QUERY));
 	unsigned char buf[39];
 	sock.RECV(buf, 39);
-	for (int i = 0; i < 39; i++)
-	{
-    		 printf("0x%04X", buf[i]);
-	}
-	
+	struct DNS_HEADER* dns = (struct DNS_HEADER*) &buf
+	cout << dns->id << endl;
+	cout << dns->ans_count << endl;
 	
 }
 return 1;}
