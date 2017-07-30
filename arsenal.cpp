@@ -17,7 +17,7 @@ else if (strcmp(argv[1], "socket") == 0){
 	sock.LISTEN((const char*)"127.0.0.1");
 	sock.SEND(DNS_QUERY, sizeof(DNS_QUERY));
 	char buf[39];
-	sock.RECV(buf.c_str(), 39);
+	sock.RECV(buf, 39);
 	
 	
 }
