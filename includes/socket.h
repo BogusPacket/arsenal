@@ -4,6 +4,8 @@
 class TCP;
 class UDP;
 
+struct DNS_QUERY {};
+
 template<class P> class Socket : protected Arsenal {
   protected:
     int sock;
