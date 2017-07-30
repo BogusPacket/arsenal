@@ -14,7 +14,8 @@ template<class P> class Socket : protected Arsenal {
       void dport(int port){server.sin_port=htons(port);}
       int CONNECT(){return connect(sock , (struct sockaddr *)&server , sizeof(server));};
       template <class Dst> inline void dst(Dst d){server.sin_addr.s_addr=inet_addr(d);}
-      template <class Src> void src(Src s){b.sin_addr.s_addr=inet_addr(s);}
+      template <class Src> void src(Src s){b.sin_addr.s_addr=inet_addr(s);}  
+      int LISTEN(int port){b.sin_port=htons(port); return bind(sock, (sockaddr*)&b, sizeof(b));}
       template <class Src> int LISTEN(Src s){b.sin_addr.s_addr=inet_addr(s); return bind(sock, (sockaddr*)&b, sizeof(b));}
       template <class Src> int LISTEN(Src s, int port){b.sin_addr.s_addr=inet_addr(s); b.sin_port=htons(port); return bind(sock, (sockaddr*)&b, sizeof(b));}
       Socket<P>(){b = {};}
