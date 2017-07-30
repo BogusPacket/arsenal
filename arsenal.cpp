@@ -20,7 +20,7 @@ else if (strcmp(argv[1], "socket") == 0){
 	sock.RECV(buf, 39);
 	for (int i = 0; i < 39; i++)
 	{
-    		printf("%02X", buf[i]);
+    		printf("0x%02X\n", buf[i]);
 	}
 	
 	
