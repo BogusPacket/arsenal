@@ -2,7 +2,7 @@
 #include "socket.h"
 #include "g2a.h"
 #define DNS_QUERY "\x00\x00\x01\x00\x00\x01\x00\x00\x00\x00\x00\x00\x03www\rthepacketgeek\x03com\x00\x00\x01\x00\x01"
-
+using namespace std;
 
 int main(int argc, char* argv[]) {
   if (strcmp(argv[1], "g2a") == 0){
@@ -20,7 +20,7 @@ else if (strcmp(argv[1], "socket") == 0){
 	sock.RECV(buf, 39);
 	for (int i = 0; i < 39; i++)
 	{
-    		printf("%c\t", buf[i]);
+    		 std::cout << std::hex << buf[i] << "\t";
 	}
 	
 	
