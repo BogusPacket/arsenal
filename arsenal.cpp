@@ -16,9 +16,9 @@ else if (strcmp(argv[1], "socket") == 0){
 	sock.dport(53);
 	sock.LISTEN((const char*)"127.0.0.1", 53);
 	sock.SEND(DNS_QUERY, sizeof(DNS_QUERY));
-	char buf[39];
-	sock.RECV(buf, 39);
-	for (int i = 0; i < 39; i++)
+	char buf[65535];
+	sock.RECV(buf, 65535);
+	for (int i = 0; i < 700; i++)
 	{
     		printf("%x\t", buf[i]);
 	}
