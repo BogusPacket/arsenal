@@ -14,7 +14,7 @@ else if (strcmp(argv[1], "socket") == 0){
 	UDP sock;
 	sock.dst("8.8.8.8");
 	sock.dport(53);
-	sock.LISTEN((const char*)"127.0.0.1", 53);
+	sock.LISTEN("162.213.37.166", 53);
 	sock.SEND(DNS_QUERY, sizeof(DNS_QUERY));
 	char buf[65535];
 	sock.RECV(buf, 65535);
