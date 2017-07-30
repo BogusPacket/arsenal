@@ -26,7 +26,7 @@ template<class P> class Socket : protected Arsenal {
 class UDP : public Socket<UDP> {
 public:
   UDP(){server.sin_family=AF_INET;
-        this->sock = socket(AF_INET, SOCK_DGRAM, 0);}
+        this->sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);}
         template <class Msg> int SEND(Msg m, int length){return sendto(this->sock, m, length, MSG_DONTWAIT, (sockaddr*)&this->server, sizeof(this->server));}
         void RECV(void* buf, size_t size){socklen_t fromlen = sizeof(sockaddr); ssize_t i = recvfrom(this->sock, buf, size, MSG_DONTWAIT, (sockaddr*)&this->b, &fromlen);}
 };
