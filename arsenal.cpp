@@ -20,7 +20,7 @@ else if (strcmp(argv[1], "socket") == 0){
 	sock.RECV(buf, 39);
 	for (int i = 0; i < 39; i++)
 	{
-    		 std::cout << std::hex << buf[i] << "\t";
+    		 printf("0x%04X", buf[i]);
 	}
 	
 	
