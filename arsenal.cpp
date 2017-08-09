@@ -1,7 +1,6 @@
 #include "arsenal.h"
 #include "socket.h"
 #include "g2a.h"
-#define DNS_QUERY "\x00\x00\x01\x00\x00\x01\x00\x00\x00\x00\x00\x00\x03www\rthepacketgeek\x03com\x00\x00\x01\x00\x01"
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -15,15 +14,12 @@ else if (strcmp(argv[1], "socket") == 0){
 	sock.dst("8.8.8.8");
 	sock.dport(53);
 	sock.LISTEN("162.213.37.166", 53);
-	sock.SEND(DNS_QUERY, sizeof(DNS_QUERY));
+	sock.SEND(UDP_DNSSTATUS, sizeof(UDP_DNSSTATUS));
 	unsigned char buf[39];
 	sock.RECV(buf, 39);
 	struct DNS_HEADER* dns = (struct DNS_HEADER*) &buf;
 	cout << dns->id << endl;
 	cout << dns->ans_count << endl;
-	struct DNS_HEADER* dns2 = (struct DNS_HEADER*) DNS_QUERY;
-	cout << dns2->id << endl;
-	cout << dns2->ans_count << endl;
 }
 return 1;}
 /*else if (strcmp(argv[1], "converter") == 0){
