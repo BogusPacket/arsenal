@@ -3,8 +3,8 @@
 #include "arsenal.h"
 class TCP;
 class UDP;
-#define UDP_ECHO (unsigned char[]){0x0d, 0x0a, 0x0d, 0x0a}
-#define UDP_DNSSTATUS (unsigned char[]){0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}
+#define UDP_ECHO (static unsigned char[]){0x0d, 0x0a, 0x0d, 0x0a}
+#define UDP_DNSSTATUS (static unsigned char[]){0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}
 /*#define UDP_RPCCHECK (unsigned char[]){0x72, 0xFE, 0x1D, 0x13, 0x00, 0x00, 0x00\x00\x00\x00\x00\x02\x00\x01\x86\xA0\x00\x01\x97\x7C\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00}
 #define UDP_NTPREQUEST (unsigned char[]){\xE3\x00\x04\xFA\x00\x01\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xC5\x4F\x23\x4B\x71\xB1\x52\xF3}
 #define UDP_NETSTAT (unsigned char[]){\x80\xF0\x00\x10\x00\x01\x00\x00\x00\x00\x00\x00\x20CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0000210001}
