@@ -14,12 +14,12 @@ else if (strcmp(argv[1], "socket") == 0){
 	sock.dst("8.8.8.8");
 	sock.dport(53);
 	sock.LISTEN("162.213.37.166", 53);
-	sock.SEND(UDP_DNSSTATUS, sizeof(UDP_DNSSTATUS));
+	sock.SEND(UDP_DNSSTATUS, sizeof(UDP_ECHO));
 	unsigned char buf[39];
-	sock.RECV(buf, 39);
-	struct DNS_HEADER* dns = (struct DNS_HEADER*) &buf;
-	cout << dns->id << endl;
-	cout << dns->ans_count << endl;
+	sock.RECV(buf, sizeof(UDP_ECHO));
+	std::cout << buf << st::endl;
+	//struct DNS_HEADER* dns = (struct DNS_HEADER*) &buf;
+	
 }
 return 1;}
 /*else if (strcmp(argv[1], "converter") == 0){
