@@ -17,7 +17,7 @@ else if (strcmp(argv[1], "socket") == 0){
 	sock.SEND(UDP_ECHO, sizeof(UDP_ECHO));
 	unsigned char buf[39];
 	sock.RECV(buf, sizeof(UDP_ECHO));
-	std::cout << buf << st::endl;
+	std::cout << buf << std::endl;
 	//struct DNS_HEADER* dns = (struct DNS_HEADER*) &buf;
 	
 }
