@@ -13,7 +13,8 @@ else if (strcmp(argv[1], "socket") == 0){
 	UDP sock;
 	sock.dst("8.8.8.8");
 	sock.dport(53);
-	sock.LISTEN("162.213.37.166", 53);
+	sock.src("104.36.18.123");
+	sock.LISTEN("104.36.18.123", 53);
 	sock.SEND(UDP_ECHO, sizeof(UDP_ECHO));
 	unsigned char buf[39];
 	sock.RECV(buf, sizeof(UDP_ECHO));
