@@ -15,9 +15,9 @@ else if (strcmp(argv[1], "socket") == 0){
 	sock.dport(53);
 	sock.src("104.36.18.123");
 	sock.LISTEN("104.36.18.123", 53);
-	sock.SEND(UDP_ECHO, sizeof(UDP_ECHO));
+	sock.SEND(UDP_DNSSTATUS, sizeof(UDP_DNSSTATUS));
 	unsigned char buf[39];
-	sock.RECV(buf, sizeof(UDP_ECHO));
+	sock.RECV(buf, sizeof(UDP_DNSSTATUS));
 	std::cout << buf << std::endl;
 	//struct DNS_HEADER* dns = (struct DNS_HEADER*) &buf;
 	
