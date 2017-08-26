@@ -19,7 +19,7 @@ else if (strcmp(argv[1], "dns") == 0){
 	//struct DNS_HEADER* dns = (struct DNS_HEADER*) &buf;
 	
 	char buf[sizeof(DNS_HEADER) + sizeof(DNS_QUESTION) + strlen(argv[2])];
-	DNS_HEADER *dns = &buf;
+	DNS_HEADER *dns = &buf[];
 	dns->id = (unsigned short) htons(1);
 	dns->qr = 0; //This is a query
    	 dns->opcode = 0; //This is a standard query
