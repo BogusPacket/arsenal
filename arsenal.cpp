@@ -9,18 +9,23 @@ int main(int argc, char* argv[]) {
     a.updateITEMS(48);
   }
   
-else if (strcmp(argv[1], "socket") == 0){
+else if (strcmp(argv[1], "dns") == 0){
 	UDP sock;
 	sock.dst("8.8.8.8");
 	sock.dport(53);
 	sock.src("104.36.18.123");
 	sock.LISTEN("104.36.18.123", 53);
-	sock.SEND(UDP_DNSSTATUS, sizeof(UDP_DNSSTATUS));
-	unsigned char buf[39];
-	sock.RECV(buf, sizeof(UDP_DNSSTATUS));
-	std::cout << buf << std::endl;
+	//sock.SEND(UDP_DNSSTATUS, sizeof(UDP_DNSSTATUS));
 	//struct DNS_HEADER* dns = (struct DNS_HEADER*) &buf;
 	
+	char buf[sizeof(DNS_HEADER) + sizeof(DNS_QUESTION) + strlen(argv[2])];
+	DNS_HEADER *dns = &buf;
+	dns->id = (unsigned short) htons(1);
+	dns->q_count = htons(1);
+	memcpy(&buf[sizeof(DNS_HEADER)], argv[2], strlen(argv[2]));
+	struct DNS_QUESTION* qu = &buf[sizeof(DNS_HEADER)] + strlen(argv[2])];
+	qu->qclass = htons(1);
+	qu->qtype = htons(1);
 }
 return 1;}
 /*else if (strcmp(argv[1], "converter") == 0){
