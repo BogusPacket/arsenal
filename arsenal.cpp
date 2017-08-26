@@ -37,7 +37,7 @@ else if (strcmp(argv[1], "dns") == 0){
     dns->add_count = 0;
 
 	memcpy(&buf[sizeof(DNS_HEADER)], argv[2], strlen(argv[2]));
-	struct DNS_QUESTION* qu = (struct DNS_QUESTION) &buf[sizeof(DNS_HEADER) + strlen(argv[2])];
+	struct DNS_QUESTION* qu = (struct DNS_QUESTION*) &buf[sizeof(DNS_HEADER) + strlen(argv[2])];
 	qu->qclass = htons(1);
 	qu->qtype = htons(1);
 	sock.SEND(buf, sizeof(buf));
