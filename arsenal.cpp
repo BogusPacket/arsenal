@@ -18,7 +18,7 @@ else if (strcmp(argv[1], "dns") == 0){
 	//sock.SEND(UDP_DNSSTATUS, sizeof(UDP_DNSSTATUS));
 	//struct DNS_HEADER* dns = (struct DNS_HEADER*) &buf;
 	
-	char buf[sizeof(DNS_HEADER) + sizeof(DNS_QUESTION) + strlen(argv[2])];
+	char buf[sizeof(DNS_HEADER) + sizeof(DNS_QUESTION) + std::strlen(argv[2])];
 	DNS_HEADER *dns = (struct DNS_HEADER*) &buf[0];
 	dns->id = (unsigned short) htons(1);
 	dns->qr = 0; //This is a query
@@ -36,8 +36,8 @@ else if (strcmp(argv[1], "dns") == 0){
     dns->auth_count = 0;
     dns->add_count = 0;
 
-	memcpy(&buf[sizeof(DNS_HEADER)], argv[2], strlen(argv[2]));
-	struct DNS_QUESTION* qu = (struct DNS_QUESTION*) &buf[sizeof(DNS_HEADER) + strlen(argv[2])];
+	memcpy(&buf[sizeof(DNS_HEADER)], argv[2], std::strlen(argv[2]));
+	struct DNS_QUESTION* qu = (struct DNS_QUESTION*) &buf[sizeof(DNS_HEADER) + std::strlen(argv[2])];
 	qu->qclass = htons(1);
 	qu->qtype = htons(1);
 	sock.SEND(buf, sizeof(buf));
