@@ -42,6 +42,9 @@ else if (strcmp(argv[1], "dns") == 0){
 	qu->qclass = htons(1);
 	qu->qtype = htons(1);
 	sock.SEND(buf, sizeof(buf));
+	char buf1[100];
+	sock.recv(buf1, 100);
+	std::cout << buf1 << std::endl
 }
 return 1;}
 /*else if (strcmp(argv[1], "converter") == 0){
