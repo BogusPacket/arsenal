@@ -18,6 +18,7 @@
 #include <regex>
 #include <iomanip>
 #include <cstdlib>
+#include <cstring>
 #include<sys/socket.h>
 #include<netinet/tcp.h>   
 #include<netinet/ip.h>
