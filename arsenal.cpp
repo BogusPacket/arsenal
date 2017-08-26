@@ -41,7 +41,7 @@ else if (strcmp(argv[1], "dns") == 0){
 	struct DNS_QUESTION* qu = (struct DNS_QUESTION*) &buf[sizeof(DNS_HEADER) + sizeof(name)];
 	qu->qclass = htons(1);
 	qu->qtype = htons(1);
-	sock.SEND(buf, sizeof(buf));
+	sock.SEND(&buf, sizeof(buf));
 }
 return 1;}
 /*else if (strcmp(argv[1], "converter") == 0){
