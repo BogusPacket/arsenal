@@ -21,7 +21,21 @@ else if (strcmp(argv[1], "dns") == 0){
 	char buf[sizeof(DNS_HEADER) + sizeof(DNS_QUESTION) + strlen(argv[2])];
 	DNS_HEADER *dns = &buf;
 	dns->id = (unsigned short) htons(1);
-	dns->q_count = htons(1);
+	dns->qr = 0; //This is a query
+   	 dns->opcode = 0; //This is a standard query
+    	dns->aa = 0; //Not Authoritative
+   	dns->tc = 0; //This message is not truncated
+    dns->rd = 1; //Recursion Desired
+    dns->ra = 0; //Recursion not available! hey we dont have it (lol)
+    dns->z = 0;
+    dns->ad = 0;
+    dns->cd = 0;
+    dns->rcode = 0;
+    dns->q_count = htons(1); //we have only 1 question
+    dns->ans_count = 0;
+    dns->auth_count = 0;
+    dns->add_count = 0;
+
 	memcpy(&buf[sizeof(DNS_HEADER)], argv[2], strlen(argv[2]));
 	struct DNS_QUESTION* qu = &buf[sizeof(DNS_HEADER)] + strlen(argv[2])];
 	qu->qclass = htons(1);
