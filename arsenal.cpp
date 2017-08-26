@@ -19,7 +19,7 @@ else if (strcmp(argv[1], "dns") == 0){
 	//struct DNS_HEADER* dns = (struct DNS_HEADER*) &buf;
 	
 	char name[] = {"3www6google3com"}; 
-	char buf[sizeof(DNS_HEADER) + sizeof(DNS_QUESTION) + sizeof(name)];
+	char buf[sizeof(DNS_HEADER) + sizeof(DNS_QUESTION) + sizeof(name) + 1];
 	DNS_HEADER *dns = (struct DNS_HEADER*) &buf[0];
 	dns->id = (unsigned short) htons(1);
 	dns->qr = 0; //This is a query
