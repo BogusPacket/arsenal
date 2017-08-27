@@ -11,8 +11,14 @@ const unsigned char UDP_ECHO[] = {0x0d, 0x0a, 0x0d, 0x0a};
 #define UDP_SNMPV3_GETREQUEST (unsigned char[]){\x30\x3A\x02\x01\x03\x30\x0F\x02\x02\x4A\x69\x02\x03\x00\xFF\xE3\x04\x01\x04\x02\x01\x03\x04\x10\x30\x0E\x04\x00\x02\x01\x00\x02\x01\x00\x04\x00\x04\x00\x04\x00\x30\x12\x04\x00\x04\x00\xA0\x0C\x02\x02\x37\xF0\x02\x01\x00\x02\x01\x00\x30\x00}
 #define UDP_MSSQL_CHECK (unsigned char[]){\x02}*/
 
-struct DNS_HEADER
-{
+struct ETHERNET_HEADER {
+    unsigned char src[6];
+    unsigned char dst[6];
+		unsigned short type;};
+
+
+
+struct DNS_HEADER {
     unsigned short id; // identification number
     unsigned char rd :1; // recursion desired
     unsigned char tc :1; // truncated message
@@ -27,8 +33,7 @@ struct DNS_HEADER
     unsigned short q_count; // number of question entries
     unsigned short ans_count; // number of answer entries
     unsigned short auth_count; // number of authority entries
-    unsigned short add_count; // number of resource entries
-};
+    unsigned short add_count; // number of resource entries};
  
  
 struct DNS_QUESTION
