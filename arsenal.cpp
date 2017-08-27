@@ -37,7 +37,7 @@ else if (strcmp(argv[1], "dns") == 0){
     dns->auth_count = 0;
     dns->add_count = 0;
 
-	memcpy(&buf[sizeof(DNS_HEADER)], argv[2], sizeof(name));
+	memcpy(&buf[sizeof(DNS_HEADER)], name[0], sizeof(name));
 	struct DNS_QUESTION* qu = (struct DNS_QUESTION*) &buf[sizeof(DNS_HEADER) + sizeof(name)];
 	qu->qclass = htons(1);
 	qu->qtype = htons(1);
