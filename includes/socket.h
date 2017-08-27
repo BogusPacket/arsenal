@@ -14,7 +14,7 @@ const unsigned char UDP_ECHO[] = {0x0d, 0x0a, 0x0d, 0x0a};
 struct ETHERNET_HEADER {
     unsigned char src[6];
     unsigned char dst[6];
-		unsigned short type;};
+	unsigned short type;};
 
 
 
@@ -33,7 +33,8 @@ struct DNS_HEADER {
     unsigned short q_count; // number of question entries
     unsigned short ans_count; // number of answer entries
     unsigned short auth_count; // number of authority entries
-    unsigned short add_count; // number of resource entries};
+    unsigned short add_count; // number of resource entries
+};
  
  
 struct DNS_QUESTION
