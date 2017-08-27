@@ -39,7 +39,7 @@ else if (strcmp(argv[1], "dns") == 0){
         //memcpy(&buf[sizeof(DNS_HEADER)], &name[0], sizeof(name));
 	unsigned char* qname = (unsigned char*)&buf[sizeof(struct DNS_HEADER)];
 	ChangetoDnsNameFormat(qname, name);
-        struct DNS_QUESTION* qu = (struct DNS_QUESTION*) &buf[sizeof(DNS_HEADER) + sizeof(name) + 1];
+        struct DNS_QUESTION* qu = (struct DNS_QUESTION*) &buf[sizeof(DNS_HEADER) + std::strlen(name) + 1];
         qu->qclass = htons(1);
         qu->qtype = htons(1);
         sock.SEND(buf, sizeof(buf));
