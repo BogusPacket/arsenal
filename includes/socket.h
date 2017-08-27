@@ -16,6 +16,20 @@ struct ETHERNET_HEADER {
     unsigned char dst[6];
 	unsigned short type;};
 
+struct IP_HEADER {
+	unsigned char ihl:5;
+	unsigned char version:4;
+	unsigned char tos;
+	unsigned short int len;
+	unsigned short int ident;
+	unsigned char flag;
+	unsigned short int offset;
+	unsigned char ttl;
+	unsigned char protocol;
+	unsigned short int chksum;
+	unsigned int src;
+	unsigned int dst;
+};
 
 
 struct DNS_HEADER {
