@@ -18,7 +18,7 @@ else if (strcmp(argv[1], "dns") == 0){
         //sock.SEND(UDP_DNSSTATUS, sizeof(UDP_DNSSTATUS));
         //struct DNS_HEADER* dns = (struct DNS_HEADER*) &buf;
 
-        unsigned char name[] = {0x03, "www" , 0x06, "google", 0x03, "com\0"};
+        unsigned char name[] = {0x03, "\x03www\x06google\x03com\0"};
         unsigned char buf[sizeof(DNS_HEADER) + sizeof(DNS_QUESTION) + sizeof(name)];
         DNS_HEADER *dns = (struct DNS_HEADER*) &buf[0];
         dns->id = (unsigned short) htons(768);
