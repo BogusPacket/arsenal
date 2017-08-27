@@ -2,7 +2,7 @@
 #include "socket.h"
 
 void printDNS_HEADER(struct DNS_HEADER* h){
-  std::cout << COLOR_GREEN << "-----DNS HEADER-----" << std::endl
+  std::cout << COLOR_GREEN << "-----DNS HEADER-----" << std::endl:
   std::cout << "id " << COLOR_RESET << ": " << COLOR_YELLOW << ntohs(h->id) << COLOR_GREEN << std::endl;
   std::cout << "rd " << COLOR_RESET << ": " << COLOR_YELLOW << h->rd << COLOR_GREEN << std::endl;
   std::cout << "tc " << COLOR_RESET << ": " << COLOR_YELLOW << h->tc << COLOR_GREEN << std::endl;
