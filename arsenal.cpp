@@ -18,7 +18,7 @@ else if (strcmp(argv[1], "dns") == 0){
         //sock.SEND(UDP_DNSSTATUS, sizeof(UDP_DNSSTATUS));
         //struct DNS_HEADER* dns = (struct DNS_HEADER*) &buf;
 
-        unsigned char name[] = {0x03, "\x03www\x06google\x03com\0"};
+        unsigned char name[] = {"www.google.com"};
         unsigned char buf[sizeof(DNS_HEADER) + sizeof(DNS_QUESTION) + sizeof(name)];
         DNS_HEADER *dns = (struct DNS_HEADER*) &buf[0];
         dns->id = (unsigned short) htons(768);
@@ -36,9 +36,10 @@ else if (strcmp(argv[1], "dns") == 0){
     	dns->ans_count = 0;
     	dns->auth_count = 0;
     	dns->add_count = 0;
-        memcpy(&buf[sizeof(DNS_HEADER)], &name[0], sizeof(name));
-	//ChangetoDnsNameFormat(&buf[sizeof(DNS_HEADER)], name);
-        struct DNS_QUESTION* qu = (struct DNS_QUESTION*) &buf[sizeof(DNS_HEADER) + sizeof(name)];
+        //memcpy(&buf[sizeof(DNS_HEADER)], &name[0], sizeof(name));
+	unsigned char* qname = (unsigned char*)&buf[sizeof(struct DNS_HEADER)];
+	ChangetoDnsNameFormat(qname, name);
+        struct DNS_QUESTION* qu = (struct DNS_QUESTION*) &buf[sizeof(DNS_HEADER) + sizeof(name) + 1];
         qu->qclass = htons(1);
         qu->qtype = htons(1);
         sock.SEND(buf, sizeof(buf));
