@@ -42,7 +42,7 @@ else if (strcmp(argv[1], "dns") == 0){
         struct DNS_QUESTION* qu = (struct DNS_QUESTION*) &buf[sizeof(DNS_HEADER) + (strlen((const char*)qname) + 1)];
         qu->qclass = htons(1);
         qu->qtype = htons(1);
-        sock.SEND(buf, sizeof(buf));
+        sock.SEND(buf, sizeof(struct DNS_HEADER) + (strlen((const char*)qname)+1) + sizeof(struct QUESTION));
         unsigned char buf1[100];
         sock.RECV(buf1, 100);
         printDNS_HEADER((struct DNS_HEADER*) &buf1[0]);
