@@ -37,6 +37,7 @@ struct DNS_QUESTION
     unsigned short qclass;
 };
 void printDNS_HEADER(struct DNS_HEADER* h);
+void ChangetoDnsNameFormat(unsigned char* dns, unsigned char* host);
 template<class P> class Socket : protected Arsenal {
   protected:
     int sock;
