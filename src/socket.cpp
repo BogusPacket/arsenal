@@ -20,4 +20,24 @@ void printDNS_HEADER(struct DNS_HEADER* h){
   std::cout << "add_count " << COLOR_RESET << ": " << COLOR_YELLOW << ntohs(h->add_count) << COLOR_GREEN << std::endl << COLOR_RESET;
 }
 
+void ChangetoDnsNameFormat(unsigned char* dns, unsigned char* host) 
+{
+    int lock = 0 , i;
+    strcat((char*)host,".");
+     
+    for(i = 0 ; i < strlen((char*)host) ; i++) 
+    {
+        if(host[i]=='.') 
+        {
+            *dns++ = i-lock;
+            for(;lock<i;lock++) 
+            {
+                *dns++=host[lock];
+            }
+            lock++; //or lock=i+1;
+        }
+    }
+    *dns++='\0';
+}
+
 
