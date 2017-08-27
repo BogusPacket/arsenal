@@ -21,7 +21,7 @@ else if (strcmp(argv[1], "dns") == 0){
         unsigned char name[] = {"3www6google3com"};
         char buf[sizeof(DNS_HEADER) + sizeof(DNS_QUESTION) + sizeof(name)];
         DNS_HEADER *dns = (struct DNS_HEADER*) &buf[0];
-        dns->id = (unsigned short) htons(1);
+        dns->id = (unsigned short) htons(768);
         dns->qr = 0; //This is a query
          dns->opcode = 0; //This is a standard query
         dns->aa = 0; //Not Authoritative
