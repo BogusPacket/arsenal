@@ -66,7 +66,7 @@ template<class P> class Socket : protected Arsenal {
     char datagram[4096];
     struct sockaddr_in server;
     struct sockaddr_in b;
-  public:
+public:
       void dport(int port){server.sin_port=htons(port);}
       int CONNECT(){return connect(sock , (struct sockaddr *)&server , sizeof(server));};
       template <class Dst> inline void dst(Dst d){server.sin_addr.s_addr=inet_addr(d);}
