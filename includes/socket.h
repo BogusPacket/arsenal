@@ -15,13 +15,11 @@ struct ETHERNET_HEADER {
 unsigned char src[6];
 unsigned char dst[6];
 unsigned short type;};
-
-struct UDP_HEADER {
-unsigned short int srcport;
-unsigned short int dstport;
-unsigned short int len;
-unsigned short int chksum;};
-
+struct TCP_HEADER {
+unsigned char version;
+unsigned char ttl;
+unsigned char dport;
+};
 struct IP_HEADER {
 unsigned char ihl:5;
 unsigned char version:4;
@@ -53,6 +51,12 @@ unsigned short ans_count; // number of answer entries
 unsigned short auth_count; // number of authority entries
 unsigned short add_count;};
   
+struct UDP_HEADER {
+unsigned short int srcport;
+unsigned short int dstport;
+unsigned short int len;
+unsigned short int chksum;};
+
 struct DNS_QUESTION {
 unsigned short qtype;
 unsigned short qclass;};
