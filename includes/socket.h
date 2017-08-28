@@ -12,59 +12,54 @@ const unsigned char UDP_ECHO[] = {0x0d, 0x0a, 0x0d, 0x0a};
 #define UDP_MSSQL_CHECK (unsigned char[]){\x02}*/
 
 struct ETHERNET_HEADER {
-    unsigned char src[6];
-    unsigned char dst[6];
-	unsigned short type;};
+unsigned char src[6];
+unsigned char dst[6];
+unsigned short type;};
 
 struct UDP_HEADER {
- unsigned short int udph_srcport;
- unsigned short int udph_destport;
- unsigned short int udph_len;
- unsigned short int udph_chksum;
-};
+unsigned short int udph_srcport;
+unsigned short int udph_destport;
+unsigned short int udph_len;
+unsigned short int udph_chksum;};
 
 struct IP_HEADER {
-	unsigned char ihl:5;
-	unsigned char version:4;
-	unsigned char tos;
-	unsigned short int len;
-	unsigned short int ident;
-	unsigned char flag;
-	unsigned short int offset;
-	unsigned char ttl;
-	unsigned char protocol;
-	unsigned short int chksum;
-	unsigned int src;
-	unsigned int dst;
-};
-
+unsigned char ihl:5;
+unsigned char version:4;
+unsigned char tos;
+unsigned short int len;
+unsigned short int ident;
+unsigned char flag;
+unsigned short int offset;
+unsigned char ttl;
+unsigned char protocol;
+unsigned short int chksum;
+unsigned int src;
+unsigned int dst;};
 
 struct DNS_HEADER {
-    unsigned short id; // identification number
-    unsigned char rd :1; // recursion desired
-    unsigned char tc :1; // truncated message
-    unsigned char aa :1; // authoritive answer
-    unsigned char opcode :4; // purpose of message
-    unsigned char qr :1; // query/response flag
-    unsigned char rcode :4; // response code
-    unsigned char cd :1; // checking disabled
-    unsigned char ad :1; // authenticated data
-    unsigned char z :1; // its z! reserved
-    unsigned char ra :1; // recursion available
-    unsigned short q_count; // number of question entries
-    unsigned short ans_count; // number of answer entries
-    unsigned short auth_count; // number of authority entries
-    unsigned short add_count; // number of resource entries
-};
- 
- 
-struct DNS_QUESTION
-{
-    unsigned short qtype;
-    unsigned short qclass;
-};
+unsigned short id; // identification number
+unsigned char rd :1; // recursion desired
+unsigned char tc :1; // truncated message
+unsigned char aa :1; // authoritive answer
+unsigned char opcode :4; // purpose of message
+unsigned char qr :1; // query/response flag
+unsigned char rcode :4; // response code
+unsigned char cd :1; // checking disabled
+unsigned char ad :1; // authenticated data
+unsigned char z :1; // its z! reserved
+unsigned char ra :1; // recursion available
+unsigned short q_count; // number of question entries
+unsigned short ans_count; // number of answer entries
+unsigned short auth_count; // number of authority entries
+unsigned short add_count;};
+  
+struct DNS_QUESTION {
+unsigned short qtype;
+unsigned short qclass;};
+
 void printDNS_HEADER(struct DNS_HEADER* h);
 void ChangetoDnsNameFormat(unsigned char* dns, unsigned char* host);
+
 template<class P> class Socket : protected Arsenal {
   protected:
     int sock;
