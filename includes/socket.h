@@ -17,10 +17,10 @@ unsigned char dst[6];
 unsigned short type;};
 
 struct UDP_HEADER {
-unsigned short int udph_srcport;
-unsigned short int udph_destport;
-unsigned short int udph_len;
-unsigned short int udph_chksum;};
+unsigned short int srcport;
+unsigned short int dstport;
+unsigned short int len;
+unsigned short int chksum;};
 
 struct IP_HEADER {
 unsigned char ihl:5;
