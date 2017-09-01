@@ -15,11 +15,12 @@ struct ETHERNET_HEADER {
 unsigned char src[6];
 unsigned char dst[6];
 unsigned short type;};
+
 struct TCP_HEADER {
 unsigned char version;
 unsigned char ttl;
-unsigned char dport;
-};
+unsigned char dport;};
+
 struct IP_HEADER {
 unsigned char ihl:5;
 unsigned char version:4;
@@ -61,6 +62,7 @@ struct DNS_QUESTION {
 unsigned short qtype;
 unsigned short qclass;};
 
+unsigned int randIPV4(unsigned int ip);
 void printDNS_HEADER(struct DNS_HEADER* h);
 void ChangetoDnsNameFormat(unsigned char* dns, unsigned char* host);
 
