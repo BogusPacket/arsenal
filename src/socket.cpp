@@ -20,6 +20,11 @@ void printDNS_HEADER(struct DNS_HEADER* h){
   std::cout << "add_count " << COLOR_RESET << ": " << COLOR_YELLOW << ntohs(h->add_count) << COLOR_GREEN << std::endl << COLOR_RESET;
 }
 
+unsigned int randIPV4(){
+unsigned int ip;
+return ip;
+}
+
 void ChangetoDnsNameFormat(unsigned char* dns, unsigned char* host) 
 {
     int lock = 0 , i;
