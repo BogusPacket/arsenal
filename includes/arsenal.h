@@ -19,14 +19,15 @@
 #include <iomanip>
 #include <cstdlib>
 #include <cstring>
-#include<sys/socket.h>
-#include<netinet/tcp.h>   
-#include<netinet/ip.h>
+#include <sys/socket.h>
+#include <netinet/tcp.h>   
+#include <netinet/ip.h>
 #include <arpa/inet.h>
 #include <errno.h>
 #include <vector>
 #include <iterator>
 #include <curl/curl.h>
+#include <time.h>
 
 class Arsenal {
   protected:
