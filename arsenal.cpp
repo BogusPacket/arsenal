@@ -2,7 +2,7 @@
 #include "socket.h"
 #include "g2a.h"
 using namespace std;
-srand (time(NULL));
+srand(time(NULL));
 int main(int argc, char* argv[]) {
   if (strcmp(argv[1], "g2a") == 0){
     G2A a;
