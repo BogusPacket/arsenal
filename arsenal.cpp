@@ -2,14 +2,12 @@
 #include "socket.h"
 #include "g2a.h"
 using namespace std;
-srand(time(NULL));
 int main(int argc, char* argv[]) {
   if (strcmp(argv[1], "g2a") == 0){
     G2A a;
     a.updateITEMS(48);
   }
-  
-else if (strcmp(argv[1], "dns") == 0){
+  else if (strcmp(argv[1], "dns") == 0){
         UDP sock;
         sock.dst("8.8.8.8");
         sock.dport(53);
