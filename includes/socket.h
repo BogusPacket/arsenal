@@ -65,7 +65,7 @@ unsigned short qclass;};
 unsigned int randIPV4(unsigned int ip);
 void printDNS_HEADER(struct DNS_HEADER* h);
 void ChangetoDnsNameFormat(unsigned char* dns, unsigned char* host);
-
+template<class Name, class Buf> void DNSLookup(Name n, Buf b);
 template<class P> class Socket : protected Arsenal {
   protected:
     int sock;
