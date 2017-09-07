@@ -1,13 +1,12 @@
 #include "arsenal.h"
 #include "socket.h"
 
-template<class Name, class Buf> void DNSLookup(Name n, Buf b){
+template<class Name, class Buf> void DNSLookup(Name name, Buf b){
 UDP sock;
 sock.dst("8.8.8.8");
 sock.dport(53);
 sock.src("104.36.18.123");
 sock.LISTEN("104.36.18.123", 53);
-unsigned char name[] = {"www.google.com"};
 unsigned char buf[65535];
 DNS_HEADER *dns = (struct DNS_HEADER*) &buf[0];
 dns->id = (unsigned short) htons(768);
