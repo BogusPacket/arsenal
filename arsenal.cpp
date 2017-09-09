@@ -7,7 +7,15 @@ int main(int argc, char* argv[]) {
     G2A a;
     a.updateITEMS(48);
   }
-  else if (strcmp(argv[1], "dns") == 0){char buf[20]; DNSLookup(argv[2], &buf[0]);}return 1;}
+  else if (strcmp(argv[1], "dns") == 0){char buf[20]; DNSLookup(argv[2], &buf[0]);}
+	else if (stdcmp(argv[1], "req") == 0){
+	TCP sock;
+	sock.dst("192.30.253.113");
+  sock.dport(80);
+  sock.src("104.36.18.123");
+	sock.CONNECT();
+	}
+	return 1;}
 
 /*else if (strcmp(argv[1], "converter") == 0){
     uint32_t addr = 0x64d2f82a;
