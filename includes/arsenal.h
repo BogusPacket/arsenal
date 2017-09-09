@@ -19,6 +19,9 @@
 #include <iomanip>
 #include <cstdlib>
 #include <cstring>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/tcp.h>   
 #include <netinet/ip.h>
@@ -28,6 +31,7 @@
 #include <iterator>
 #include <curl/curl.h>
 #include <time.h>
+#include <netdb.h>
 
 class Arsenal {
   protected:
