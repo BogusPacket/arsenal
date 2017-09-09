@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
     a.updateITEMS(48);
   }
   else if (strcmp(argv[1], "dns") == 0){char buf[20]; DNSLookup(argv[2], &buf[0]);}
-	else if (stdcmp(argv[1], "req") == 0){
+	else if (strcmp(argv[1], "req") == 0){
 	TCP sock;
 	sock.dst("192.30.253.113");
   sock.dport(80);
