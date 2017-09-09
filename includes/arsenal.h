@@ -15,6 +15,8 @@
 #include <bitset>
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <fstream>
 #include <regex>
 #include <iomanip>
 #include <cstdlib>
