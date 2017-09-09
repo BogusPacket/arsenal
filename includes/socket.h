@@ -65,6 +65,38 @@ unsigned short qclass;};
 unsigned int randIPV4(unsigned int ip);
 void printDNS_HEADER(struct DNS_HEADER* h);
 void ChangetoDnsNameFormat(unsigned char* dns, unsigned char* host);
+
+template<class P> class Socket : protected Arsenal {
+  protected:
+    int sock;
+    char datagram[4096];
+    struct sockaddr_in server;
+    struct sockaddr_in b;
+public:
+      void dport(int port){server.sin_port=htons(port);}
+      int CONNECT(){return connect(sock , (struct sockaddr *)&server , sizeof(server));};
+      template <class Dst> inline void dst(Dst d){server.sin_addr.s_addr=inet_addr(d);}
+      template <class Src> void src(Src s){b.sin_addr.s_addr=inet_addr(s);}  
+      int LISTEN(int port){b.sin_port=htons(port); return bind(sock, (sockaddr*)&b, sizeof(b));}
+      template <class Src> int LISTEN(Src s){b.sin_addr.s_addr=inet_addr(s); return bind(sock, (sockaddr*)&b, sizeof(b));}
+      template <class Src> int LISTEN(Src s, int port){b.sin_addr.s_addr=inet_addr(s); b.sin_port=htons(port); return bind(sock, (sockaddr*)&b, sizeof(b));}
+      Socket<P>(){b = {};}
+};
+
+class UDP : public Socket<UDP> {
+public:
+  UDP(){server.sin_family=AF_INET;
+        this->sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);}
+        template <class Msg> int SEND(Msg m, int length){return sendto(this->sock, m, length, MSG_DONTWAIT, (sockaddr*)&this->server, sizeof(this->server));}
+        void RECV(void* buf, size_t size){socklen_t fromlen = sizeof(sockaddr);
+            ssize_t i = recvfrom(this->sock, buf, size, MSG_DONTWAIT, (sockaddr*)&this->b, &fromlen);}
+};
+
+class TCP : public Socket<TCP> {
+  public:
+  TCP(){this->sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); this->server.sin_family=AF_INET;}
+  int SEND(std::string buf){return send(this->sock, buf.c_str(), buf.size(), 0);}   //TODO: Error Handling
+  void RECV(){char cur; while (read(this->sock, &cur, 1) > 0 ) {cout << cur;}}};
 template<class Name, class Buf> void DNSLookup(Name name, Buf b){
   UDP sock;
   sock.dst("8.8.8.8");
@@ -97,36 +129,4 @@ template<class Name, class Buf> void DNSLookup(Name name, Buf b){
   unsigned char buf1[100];
   sock.RECV(buf1, 100);
   printDNS_HEADER((struct DNS_HEADER*) &buf1[0]);}
-template<class P> class Socket : protected Arsenal {
-  protected:
-    int sock;
-    char datagram[4096];
-    struct sockaddr_in server;
-    struct sockaddr_in b;
-public:
-      void dport(int port){server.sin_port=htons(port);}
-      int CONNECT(){return connect(sock , (struct sockaddr *)&server , sizeof(server));};
-      template <class Dst> inline void dst(Dst d){server.sin_addr.s_addr=inet_addr(d);}
-      template <class Src> void src(Src s){b.sin_addr.s_addr=inet_addr(s);}  
-      int LISTEN(int port){b.sin_port=htons(port); return bind(sock, (sockaddr*)&b, sizeof(b));}
-      template <class Src> int LISTEN(Src s){b.sin_addr.s_addr=inet_addr(s); return bind(sock, (sockaddr*)&b, sizeof(b));}
-      template <class Src> int LISTEN(Src s, int port){b.sin_addr.s_addr=inet_addr(s); b.sin_port=htons(port); return bind(sock, (sockaddr*)&b, sizeof(b));}
-      Socket<P>(){b = {};}
-};
-
-class UDP : public Socket<UDP> {
-public:
-  UDP(){server.sin_family=AF_INET;
-        this->sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);}
-        template <class Msg> int SEND(Msg m, int length){return sendto(this->sock, m, length, MSG_DONTWAIT, (sockaddr*)&this->server, sizeof(this->server));}
-        void RECV(void* buf, size_t size){socklen_t fromlen = sizeof(sockaddr);
-            ssize_t i = recvfrom(this->sock, buf, size, MSG_DONTWAIT, (sockaddr*)&this->b, &fromlen);}
-};
-
-class TCP : public Socket<TCP> {
-  public:
-  TCP(){this->sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); this->server.sin_family=AF_INET;}
-  int SEND(std::string buf){return send(this->sock, buf.c_str(), buf.size(), 0);}   //TODO: Error Handling
-  void RECV(){char cur; while (read(this->sock, &cur, 1) > 0 ) {cout << cur;}}};
-
 #endif
