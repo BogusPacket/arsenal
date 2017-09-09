@@ -96,5 +96,6 @@ class TCP : public Socket<TCP> {
   public:
   TCP(){this->sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
         this->server.sin_family=AF_INET;}};
+  int SEND(std::stringstream buf){return send(sock, buf.c_str(), buf.length(), 0);}   //TODO: Error Handling
 
 #endif
