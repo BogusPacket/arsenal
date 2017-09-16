@@ -15,6 +15,8 @@ function MakeSha(bytes){
         var hash = crypto.createHash('sha1')
         hash.update(bytes);
         return hash.digest();}
+
+var regex = require('regex')
 var request = require('request');
 var url = "http://steamcommunity.com/market/listings/730/AK-47%20%7C%20Redline%20%28Field-Tested%29";
 var username = "obama_stole_my_dog";
