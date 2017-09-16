@@ -1,1 +1,0 @@
-$('#consolebtn').click( function() {loadModule($('#console'));});
