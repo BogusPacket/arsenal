@@ -15,7 +15,7 @@ function MakeSha(bytes){
         var hash = crypto.createHash('sha1')
         hash.update(bytes);
         return hash.digest();}
-var request = new XMLHttpRequest();
+var request = require('request');
 var url = "http://steamcommunity.com/market/listings/730/AK-47%20%7C%20Redline%20%28Field-Tested%29";
 var username = "obama_stole_my_dog";
 var password = "Niggers1286";
@@ -39,8 +39,7 @@ steamClient.on('logOnResponse', function(response){
 CSGO.on("ready", function(){CSGO.itemDataRequest("76561198218077912", "3162370634", "14909734931962909189", "0");});
 CSGO.on("itemData", function(itemdata){
         console.log(itemdata);
-        request.open("GET", url);
-        request.send(null);
+        console.log(request.get(url));
         console.log("Request Sent!");
         console.log("Exiting CSGO...");
         CSGO.exit();
