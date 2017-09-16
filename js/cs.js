@@ -1,0 +1,1 @@
+var loggedin = 0;
