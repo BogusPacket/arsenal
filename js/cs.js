@@ -32,8 +32,8 @@ steamClient.on('logOnResponse', function(response){
                 loggedin = 1;
                 console.log('Logged In!');
                 steamFriends.setPersonaState(Steam.EPersonaState.Busy);
-                console.log("Current SteamID64: " + steamClient.steamID$
-                console.log("Account ID: " + CSGO.ToAccountID(steamClie$
+                console.log("Current SteamID64: " + steamClient.steamID);
+                console.log("Account ID: " + CSGO.ToAccountID(steamClient.steamID);
                 CSGO.launch();}});
 
 CSGO.on("ready", function(){CSGO.itemDataRequest("76561198218077912", "3162370634", "14909734931962909189", "0");});
