@@ -36,7 +36,7 @@ steamClient.on('logOnResponse', function(response){
                 console.log("Account ID: " + CSGO.ToAccountID(steamClie$
                 CSGO.launch();}});
 
-CSGO.on("ready", function(){CSGO.itemDataRequest("76561198218077912", "$
+CSGO.on("ready", function(){CSGO.itemDataRequest("76561198218077912", "3162370634", "14909734931962909189", "0");});
 CSGO.on("itemData", function(itemdata){console.log(itemdata);});
 steamUser.on('updateMachineAuth', function(response, callback){
         fs.writeFileSync('sentry', response.bytes);
