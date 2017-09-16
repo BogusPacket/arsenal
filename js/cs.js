@@ -37,7 +37,10 @@ steamClient.on('logOnResponse', function(response){
                 CSGO.launch();}});
 
 CSGO.on("ready", function(){CSGO.itemDataRequest("76561198218077912", "3162370634", "14909734931962909189", "0");});
-CSGO.on("itemData", function(itemdata){console.log(itemdata);});
+CSGO.on("itemData", function(itemdata){
+        console.log(itemdata);
+        CSGO.exit();
+        steamClient.disconnect();});
 steamUser.on('updateMachineAuth', function(response, callback){
         fs.writeFileSync('sentry', response.bytes);
         callback({sha_file: MakeSha(response.bytes)});});
