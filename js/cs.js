@@ -39,7 +39,7 @@ steamClient.on('logOnResponse', function(response){
 CSGO.on("ready", function(){CSGO.itemDataRequest("76561198218077912", "3162370634", "14909734931962909189", "0");});
 CSGO.on("itemData", function(itemdata){
         console.log(itemdata);
-        request(url, function (error, response, body){console.log(body);});
+        request(url, function (error, response, body){console.log("statusCode: " + response.statusCode);});
         console.log("Request Sent!");
         console.log("Exiting CSGO...");
         CSGO.exit();
