@@ -27,7 +27,8 @@ def get_links(start):
             s = r[i].split("\",\"")[0]
             if "listing" not in s:
                 if s not in links:
-                    links.append(s)
+                    if "csgo_econ" in s:
+                        links.append(s)
             i += 1
         except: break
     i = 0
