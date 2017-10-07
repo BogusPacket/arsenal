@@ -1,4 +1,4 @@
-import logging, steam, struct, csgo, crypto, re
+import logging, steam, struct, csgo, crypto, re, urllib
 logging.basicConfig(format='[%(asctime)s] %(levelname)s %(name)s: %(message)s', level=logging.DEBUG)
 from csgo import CSGOClient
 from csgo.enums import ECsgoGCMsg
