@@ -48,16 +48,11 @@ def inspect_item(u):
 @client.on('logged_on')
 def start_csgo():
     cs.launch()
-
-@cs.on('ready')
-def gc_ready():
-    #inspect_item("steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S76561198197277525A11917086098D4948412171191378526")
-    #time.sleep(1)
-    #inspect_item("steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S76561198218077912A3162370634D14909734931962909189")
-    #time.sleep(2)
-    #Factory New
     inspect_item("steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S76561198197277525A11602151187D3045780037281461530")
 
+#@cs.on('ready')
+#def gc_ready():
+ 
 client.cli_login(username="obama_stole_my_dog", password="Niggers1286")
 client.run_forever()
 
