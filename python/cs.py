@@ -73,17 +73,18 @@ def inspect_item(u):
 @client.on('logged_on')
 def start_csgo():
     cs.launch()
-    time
 #    inspect_item("steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S76561198197277525A11602151187D3045780037281461530")
 
 @cs.on('ready')
 def gc_ready():
+    print("cs ready!")
     start = 0
     while 1:
         links = get_links(start)
         for each in links:
             print each
             inspect_item(each)
+            time.sleep(.75)
         start += 100
     
    #inspect_item("steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20M1711789915681407128A12199831625D10152853838133115354") 
