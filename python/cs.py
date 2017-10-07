@@ -1,4 +1,5 @@
 import logging, steam, struct, csgo, crypto, re, urllib, time
+key = "31216AF1828F766CE0118DD425F82C90"
 #logging.basicConfig(format='[%(asctime)s] %(levelname)s %(name)s: %(message)s', level=logging.DEBUG)
 from csgo import CSGOClient
 from csgo.enums import ECsgoGCMsg
