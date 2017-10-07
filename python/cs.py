@@ -1,5 +1,5 @@
 import logging, steam, struct, csgo, crypto, re, urllib, time
-logging.basicConfig(format='[%(asctime)s] %(levelname)s %(name)s: %(message)s', level=logging.DEBUG)
+#logging.basicConfig(format='[%(asctime)s] %(levelname)s %(name)s: %(message)s', level=logging.DEBUG)
 from csgo import CSGOClient
 from csgo.enums import ECsgoGCMsg
 #from csgo.enums import EGCItemMsg
