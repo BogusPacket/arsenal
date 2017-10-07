@@ -16,7 +16,7 @@ message.body.client_language = "english"
 message.body.should_remember_password = True
 message.body.supports_rate_limit_response = True
 print(message.__str__())
-def get_links:
+def get_links():
     url = "http://steamcommunity.com/market/listings/730/M249%20%7C%20Gator%20Mesh%20%28Factory%20New%29"
     txt = urllib.urlopen(url).read()
     r = re.split("{\"link\":\"", txt)
