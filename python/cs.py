@@ -36,8 +36,7 @@ def get_links():
         links[i] = links[i].replace("%assetid%", assetid)
         links[i] = links[i].replace("\\", "")
         i += 1
-    for each in links:
-        print each
+    return links
 
 
 def inspect_item(u):
@@ -73,11 +72,17 @@ def inspect_item(u):
 @client.on('logged_on')
 def start_csgo():
     cs.launch()
+    time
 #    inspect_item("steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S76561198197277525A11602151187D3045780037281461530")
 
 @cs.on('ready')
 def gc_ready():
-   inspect_item("steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20M1711789915681407128A12199831625D10152853838133115354") 
+   links = get_links()
+   for each in links:
+        print each
+        inspect_item(each)
+    
+   #inspect_item("steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20M1711789915681407128A12199831625D10152853838133115354") 
 
 client.cli_login(username="obama_stole_my_dog", password="Niggers1286")
 client.run_forever()
