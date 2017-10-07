@@ -42,7 +42,6 @@ def get_links(start):
 
 def inspect_item(u):
     #u = u.split("steam://rungame/730/")[0]
-    print(u)
     try:
         u = u.split("S")[1]
         s = int(u.split("A")[0])
