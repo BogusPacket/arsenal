@@ -6,7 +6,7 @@ from csgo.enums import ECsgoGCMsg
 #from csgo import enums
 client = steam.SteamClient()
 cs = CSGOClient(client)
-
+url1 = "http://steamcommunity.com/market/listings/730/M249%20%7C%20Gator%20Mesh%20%28Factory%20New%29"
 message = steam.core.msg.MsgProto(steam.enums.emsg.EMsg.ClientLogon)
 message.header.steamid = steam.steamid.SteamID(type='Individual', universe='Public')
 message.body.protocol_version = 65579
