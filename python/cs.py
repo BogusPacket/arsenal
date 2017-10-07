@@ -16,8 +16,8 @@ message.body.client_language = "english"
 message.body.should_remember_password = True
 message.body.supports_rate_limit_response = True
 print(message.__str__())
-def get_links():
-    url = "http://steamcommunity.com/market/listings/730/M249%20%7C%20Gator%20Mesh%20%28Factory%20New%29"
+def get_links(start):
+    url = "http://steamcommunity.com/market/listings/730/M249%20%7C%20Gator%20Mesh%20%28Factory%20New%29/render/?query=&start=" + str(start) + "&count=100&country=US&language=english&currency=1"
     txt = urllib.urlopen(url).read()
     r = re.split("{\"link\":\"", txt)
     i = 0
@@ -77,10 +77,13 @@ def start_csgo():
 
 @cs.on('ready')
 def gc_ready():
-   links = get_links()
-   for each in links:
-        print each
-        inspect_item(each)
+    start = 0
+    while 1:
+        links = get_links(start)
+        for each in links:
+            print each
+            inspect_item(each)
+        start += 100
     
    #inspect_item("steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20M1711789915681407128A12199831625D10152853838133115354") 
 
