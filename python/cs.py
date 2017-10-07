@@ -16,6 +16,30 @@ message.body.client_language = "english"
 message.body.should_remember_password = True
 message.body.supports_rate_limit_response = True
 print(message.__str__())
+def get_links:
+    url = "http://steamcommunity.com/market/listings/730/M249%20%7C%20Gator%20Mesh%20%28Factory%20New%29"
+    txt = urllib.urlopen(url).read()
+    r = re.split("{\"link\":\"", txt)
+    i = 0
+    links = []
+    while 1:
+        try:
+            s = r[i].split("\",\"")[0]
+            if "listing" not in s:
+                if s not in links:
+                    links.append(s)
+            i += 1
+        except: break
+    i = 0
+    while i < len(links):
+        assetid =  txt.split(links[i].split("M")[1].split("A")[0] + "_name\', 730, \'2\', \'")[1].split("\',")[0]
+        links[i] = links[i].replace("%assetid%", assetid)
+        links[i] = links[i].replace("\\", "")
+        i += 1
+    for each in links:
+        print each
+
+
 def inspect_item(u):
     #u = u.split("steam://rungame/730/")[0]
     print(u)
@@ -45,6 +69,7 @@ def inspect_item(u):
     #print(crit)
     #response, = cs.wait_msg(EGBaseMsg.CSOItemCriteria, {})
     #print(response)
+    
 @client.on('logged_on')
 def start_csgo():
     cs.launch()
