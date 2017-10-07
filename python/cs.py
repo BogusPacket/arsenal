@@ -29,7 +29,7 @@ def inspect_item(u):
     except:
        u = u.split("M")[1]
        m = int(u.split("A")[0])
-       a = int(u.split("A")[1]).split("D")[0]
+       a = int(u.split("A")[1].split("D")[0])
        d = int(u.split("D")[1])
        s = 0
     cs.send(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest, {
