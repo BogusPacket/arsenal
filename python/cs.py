@@ -45,6 +45,9 @@ def inspect_item(u):
     #print(crit)
     #response, = cs.wait_msg(EGBaseMsg.CSOItemCriteria, {})
     #print(response)
+@client.on('logged_on')
+def start_csgo():
+    cs.launch()
 
 @cs.on('ready')
 def gc_ready():
@@ -57,4 +60,4 @@ def gc_ready():
 
 client.cli_login(username="obama_stole_my_dog", password="Niggers1286")
 client.run_forever()
-cs.launch()
+
