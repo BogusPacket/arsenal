@@ -10,25 +10,23 @@ class skins(object):
                 class office(object):
                         white = {
                                 "FAMAS | Contrast Spray" : {
-                                                "Max_Float" = 0.80,
-                                                "Min_Float" = 0.06
+                                                "Max_Float" : 0.80,
+                                                "Min_Float" : 0.06
                                 }
                         }
 
                         teal = {
                                 "Galil AR | Winter Forest" : {
-                                                "Max_Float" = 0.80,
-                                                "Min_Float" = 0.06
+                                                "Max_Float" : 0.80,
+                                                "Min_Float" : 0.06
                                 },
                                 "M249 | Blizzard Marbleized" : {
-                                                "Max_Float" = 0.80,
-                                                "Min_Float" = 0.06
+                                                "Max_Float" : 0.80,
+                                                "Min_Float" : 0.06
                                 },
                                 "G3SG1 | Arctic Camo" : {
-                                                "Max_Float" = 0.80,
-                                                "Min_Float" = 0.06
+                                                "Max_Float" : 0.80,
+                                                "Min_Float" : 0.06
                                 }
                         }
-                        purple : None,
-                        pink : None,
-                        red : None
+print(skins.collections.office.white["FAMAS | Contrast Spray"])
