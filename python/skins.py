@@ -10,6 +10,7 @@ class skins(object):
                 class office(object):
                         white = {
                                 "FAMAS | Contrast Spray" : {
+                                                
                                                 "Max_Float" : 0.80,
                                                 "Min_Float" : 0.06
                                 }
