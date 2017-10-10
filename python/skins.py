@@ -9,7 +9,7 @@ def getSkinListingCount(skin, wear):
 
 def getMinPriceOfSkin(skin, wear):
         skin += (" %28" + wear + "%29")
-        url = "http://steamcommunity.com/market/listings/730/" + skin + "/render/?query=&start=0&count=1&"
+        url = "http://steamcommunity.com/market/listings/730/" + skin + "/render/?query=&start=0&count=1&country=US&language=english&currency=1"
         url = url.replace(" ", "%20")
         url = url.replace("|", "%7C")
         txt = urllib.urlopen(url).read()
