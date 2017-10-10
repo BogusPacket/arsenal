@@ -1,7 +1,16 @@
 import re, urllib
+def getSkinListingCount(skin, wear):
+        skin += (" %28" + wear + "%29")
+        url = "http://steamcommunity.com/market/listings/730/" + skin
+        url = url.replace(" ", "%20")
+        url = url.replace("|", "%7C")
+        txt = urllib.urlopen(url).read()
+        return int(re.findall("(searchResults_total.{2})([0-9]+)", txt)[0][1])
+
 def getMinPriceOfSkin(skin, wear):
         skin += (" %28" + wear + "%29")
-        url = "http://steamcommunity.com/market/listings/730/" + skin + "/render/?query=&start=0&count=1&$        url = url.replace(" ", "%20")
+        url = "http://steamcommunity.com/market/listings/730/" + skin + "/render/?query=&start=0&count=1&"
+        url = url.replace(" ", "%20")
         url = url.replace("|", "%7C")
         txt = urllib.urlopen(url).read()
         return re.findall("(\$[0-9]+\.[0-9]+)", txt)[0].split("$")[1]
