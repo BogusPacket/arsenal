@@ -8,14 +8,14 @@ def getMinPriceOfSkin(skin, wear):
 class skins(object):
         class collections(object):
                 class office(object):
-                        class white(object) = {
+                        white = {
                                 "FAMAS | Contrast Spray" : {
                                                 "Max_Float" = 0.80,
                                                 "Min_Float = 0.06
                                 }
-                        },
+                        }
 
-                        class teal = {
+                        teal = {
                                 "Galil AR | Winter Forest" : {
                                                 "Max_Float" = 0.80,
                                                 "Min_Float = 0.06
@@ -28,13 +28,7 @@ class skins(object):
                                                 "Max_Float" = 0.80,
                                                 "Min_Float = 0.06
                                 }
-                        },
-                        class blue = {
-                                "MP7 | Whiteout" : {
-                                                                max_float = 0.80,
-                                                                min_float = 0.06
-                                }
-                        },
+                        }
                         purple : None,
                         pink : None,
                         red : None
