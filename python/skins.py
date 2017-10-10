@@ -35,43 +35,6 @@ class skins(object):
                                                                 min_float = 0.06
                                 }
                         },
-                        class skins(object):
-        class collections(object):
-                class office(object):
-                        white = {
-                                "FAMAS | Contrast Spray" : {
-                                                                max_float = 0.80,
-                                                                min_float = 0.06
-                        
-                        },
-
-                        teal = {
-                                "Galil AR | Winter Forest" : {
-                                                                max_float = 0.80,
-                                                                min_float = 0.06
-                                },
-                                "M249 | Blizzard Marbleized" : {
-                                                                max_float = 0.80,
-                                                                min_float = 0.06
-                                },
-                                "G3SG1 | Arctic Camo" : {
-                                                                max_float = 0.80,
-                                                                min_float = 0.06
-                                }
-                        },
-                        blue = {
-                                "MP7 | Whiteout" : {
-                                                                max_float = 0.80,
-                                                                min_float = 0.06
-                                }
-                        },
                         purple : None,
                         pink : None,
                         red : None
-              
-        purple : None,
-                        pink : None,
-                        red : None
-              
-        
-
