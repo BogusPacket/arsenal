@@ -29,4 +29,10 @@ class skins(object):
                                                 "Min_Float" : 0.06
                                 }
                         }
+                        blue = {
+                                "MP7 | Whiteout" : {
+                                                "Max Float" : 0.80,
+                                                "Min Float" : 0.06
+                                }
+                        }
 print(skins.collections.office.white["FAMAS | Contrast Spray"])
