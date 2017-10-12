@@ -5,12 +5,12 @@ from csgo import CSGOClient
 from csgo.enums import ECsgoGCMsg
 #from csgo.enums import EGCItemMsg
 #from csgo import enums
-user = steam.webauth.WebAuth("jarsaltaccount", "niggersstink69")
-user.login(twofactor_code=sys.argv[4])
+#user = steam.webauth.WebAuth("jarsaltaccount", "niggersstink69")
+#user.login(twofactor_code=sys.argv[4])
 #tar = sys.argv[2]
-maxminusmin = float(sys.argv[1])
-f = open(sys.argv[2])
-max = float(sys.argv[3])
+#maxminusmin = float(sys.argv[1])
+#f = open(sys.argv[2])
+#max = float(sys.argv[3])
 skins = []
 for line in f:
         skins.append(float(line))
@@ -29,11 +29,11 @@ message.body.client_language = "english"
 message.body.should_remember_password = True
 message.body.supports_rate_limit_response = True
 print(message.__str__())
-def buy(link):
-        global user
-        id = link.split("M")[1].split("A")[0]
-        print id
-        print user.session.get("http://steamcommunity.com/market/buylisting/" + id)
+#def buy(link):
+ #       global user
+ #       id = link.split("M")[1].split("A")[0]
+ #       print id
+ #       print user.session.get("http://steamcommunity.com/market/buylisting/" + id)
 def min(lst):
         m = 0.9999999
         for each in lst:
@@ -56,7 +56,7 @@ def min_list(lst):
         return ordered
 
 def req(skin, start, cnt):
-    url = "http://steamcommunity.com/market/listings/730/" + skin + "/render/?query=&start=" + str(start) + "&count=" + str(count) + &country=US&lan$
+    url = "http://steamcommunity.com/market/listings/730/" + skin + "/render/?query=&start=" + str(start) + "&count=" + str(count) + "&country=US&language=english&currency=1"
     url = url.replace(" ", "%20")
     url = url.replace("|", "%7C")
     url = url.replace("(", "%28")
