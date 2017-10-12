@@ -124,14 +124,14 @@ def get_links(skin, start, cnt, delay):
                                 start += 100
                         for each in tmp:
                                 links.append(each)
-         skins = dict()
-         floats = []
-         for each in links:
-                        wear = inspect_item(each)
-                        skins[each] = wear
-                        floats.append(wear)
-                        time.sleep(delay)
-         return skins, min_float(skins)
+        skins = dict()
+        floats = []
+        for each in links:
+                wear = inspect_item(each)
+                skins[each] = wear
+                floats.append(wear)
+                time.sleep(delay)
+        return skins, min_float(skins)
 
 @client.on('logged_on')
 def start_csgo():
