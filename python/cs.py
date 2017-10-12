@@ -46,17 +46,21 @@ def min_list(lst):
         print("Finding Min...")
         global skins
         ordered = []
-        while len(ordered) < 10:
+        while len(ordered) < len(lst):
                 min = 99999
                 for each in lst:
-                        if each < min:
-                                if each not in ordered:
+                        if each[lst] < min:
+                                if each[lst] not in ordered:
                                         min = each
                 ordered.append(min)
         return ordered
 
-def req(start, cnt):
-    url = "http://steamcommunity.com/market/listings/730/M249%20%7C%20Gator%20Mesh%20%28Factory%20New%29/render/?query=&start=" + str(start) + "&count=" + str(cnt) + "&country=US&language=english&currency=1"
+def req(skin, start, cnt):
+    url = "http://steamcommunity.com/market/listings/730/" + skin + "/render/?query=&start=" + str(start) + "&count=" + str(count) + &country=US&lan$
+    url = url.replace(" ", "%20")
+    url = url.replace("|", "%7C")
+    url = url.replace("(", "%28")
+    url = url.replace(")", "%29")
     txt = urllib.urlopen(url).read()
     r = re.split("{\"link\":\"", txt)
     i = 0
@@ -77,24 +81,6 @@ def req(start, cnt):
         links[i] = links[i].replace("\\", "")
         i += 1
     return links
-
-def get_links(start, cnt):
-        if cnt < 100:
-                return req(start, cnt)
-        else:
-                links = []
-                while cnt:
-                        tmp = []
-                        if cnt < 100:
-                                tmp = req(start, cnt)
-                                cnt = 0
-                        else:
-                                tmp = req(start, 100)
-                                cnt -= 100
-                                start += 100
-                        for each in tmp:
-                                links.append(each)
-
 
 def inspect_item(u):
     #u = u.split("steam://rungame/730/")[0]
@@ -120,12 +106,32 @@ def inspect_item(u):
     response, = cs.wait_event(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse)
 
     ret = struct.unpack("f", struct.pack("i", response.iteminfo.paintwear))[0]
-    print ret
     return float(ret)
-    #crit = cs.socache[csgo.enums.ESOType.CSOItemRecipe][30]
-    #print(crit)
-    #response, = cs.wait_msg(EGBaseMsg.CSOItemCriteria, {})
-    #print(response)
+
+def get_links(skin, start, cnt, delay):
+        if cnt < 100:
+                links =  req(skin, start, cnt)
+        else:
+                links = []
+                while cnt:
+                        tmp = []
+                        if cnt < 100:
+                                tmp = req(skin, start, cnt)
+                                cnt = 0
+                        else:
+                                tmp = req(skin, start, 100)
+                                cnt -= 100
+                                start += 100
+                        for each in tmp:
+                                links.append(each)
+         skins = dict()
+         floats = []
+         for each in links:
+                        wear = inspect_item(each)
+                        skins[each] = wear
+                        floats.append(wear)
+                        time.sleep(delay)
+         return skins, min_float(skins)
 
 @client.on('logged_on')
 def start_csgo():
@@ -135,31 +141,20 @@ def start_csgo():
 @cs.on('ready')
 def gc_ready():
     print("cs ready!")
-    floats = []
+    low_floats = []
     floats_dict = dict()
-    links = get_links(0, 10)
-    for each in links:
-        float = inspect_item(each)
-        floats.append(float)
-        floats_dict[float] = each
-        time.sleep(0.75)
-    ordered = min_list(floats)
-    avg = int()
-    for each in ordered:
-        if len(skins) == 10: break
-        else:
-                skins.append(each)
-    print len(skins)
-    for each in skins:
-        print each
-        avg += each
-    avg = avg / 10
-    print("\n")
-    float = (maxminusmin * avg) + 0.004
-    print float
-    if float < max:
-        for each in ordered:
-                buy(floats_dict[each])
+    floats_dict, low_floats = get_links("Glock | Fade (Minimal Wear)", 0, 10)
+    #print len(skins)
+    #for each in skins:
+    #    print each
+    #    avg += each
+    #avg = avg / 10
+    #print("\n")
+    #float = (maxminusmin * avg) + 0.004
+    #print float
+    #if float < max:
+    #    for each in ordered:
+    #            buy(floats_dict[each])
     #inspect_item("steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20M1711789915681407128A12199831625D10152853838133115354")
 
 client.cli_login(username="obama_stole_my_dog", password="Niggers1286")
