@@ -12,7 +12,7 @@ class DesktopClient:
 		self.csgo.launch()
 		
 class Skin:
-	def __init__(self, name=None, steamid=None, itemid=None, assetid=None, price=None, fee=None, float=None, marketid=None):
+	def __init__(self, name=None, steamid=0, itemid=None, assetid=None, price=None, fee=None, float=None, marketid=0):
 		self.name=name
     		self.marketid=marketid
     		self.assetid=assetid
@@ -24,10 +24,10 @@ class Skin:
 		
 	def getFloat(self, client): #getFloat will alternate between steam clients
 		client.csgo.send(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest, {
-                    'param_s': self.steamid,
-                    'param_a': self.assetid,
-                    'param_d': self.itemid,
-                    'param_m': self.marketid,})
+                    'param_s': int(self.steamid),
+                    'param_a': int(self.assetid),
+                    'param_d': int(self.itemid),
+                    'param_m': int(self.marketid),})
 		response, = client.csgo.wait_event(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse)
 		self.float=struct.unpack("f", struct.pack("i", response.iteminfo.paintwear))[0]
 		
