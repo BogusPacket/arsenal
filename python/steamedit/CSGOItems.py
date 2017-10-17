@@ -1,5 +1,5 @@
-from steamkit.SteamClient import SteamClient
-class CSGOItem(SteamClient):
+import steamkit.clients
+class Item(Desktop):
 	def __init__(self, name=None, steamid=None, itemid=None, assetid=None, price=None, fee=None, float=None):
 		self.name=name
     		self.marketid=marketid
@@ -59,6 +59,6 @@ def getSkinListings(skin, start, cnt):
 	items = []
 	i = 0
 	for each in links:
-		items.append(CSGOItem(marketid=marketids[i], itemid=itemids[i], price=prices[i], fee=fees[i]))
+		items.append(Item(marketid=marketids[i], itemid=itemids[i], price=prices[i], fee=fees[i]))
 		i += 1
 	return items
