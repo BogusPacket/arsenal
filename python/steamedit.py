@@ -22,12 +22,12 @@ class Skin:
 		self.price=price
 		
 	def getFloat(self, client): #getFloat will alternate between steam clients
-		client.send(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest, {
+		client.csgo.send(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest, {
                     'param_s': self.steamid,
                     'param_a': self.assetid,
                     'param_d': self.itemid,
                     'param_m': self.marketid,})
-		response, = client.wait_event(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse)
+		response, = client.csgo.wait_event(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse)
 		self.float=struct.unpack("f", struct.pack("i", response.iteminfo.paintwear))[0]
 		
 def getSkinListings(skin, start, cnt):
