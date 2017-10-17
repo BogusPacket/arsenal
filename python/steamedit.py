@@ -12,7 +12,7 @@ class DesktopClient(threading.Thread):
 		self.client.run_forever()
 	def startCSGO(self):
 		self.csgo.launch()
-	def run(self): while 1: pass
+	def run(self): while 1: continue
 		
 class Skin:
 	def __init__(self, name=None, steamid=0, itemid=0, assetid=0, price=None, fee=None, float=None, marketid=0):
