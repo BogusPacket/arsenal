@@ -1,6 +1,5 @@
 #!/usr/bin/python
-import steam
-import csgo
+import steam, csgo, urllib
 class DesktopClient:
 	def __init__(self, username='', password=''):
 		self.username = username
