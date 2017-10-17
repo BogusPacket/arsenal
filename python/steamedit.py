@@ -65,7 +65,7 @@ def getSkinListings(skin, start, cnt):
 	prices = re.findall("market_listing_price market_listing_price_with_fee.{20}([0-9]+\.[0-9]+)", txt)
 	i = 0
 	for each in re.findall("market_listing_price market_listing_price_without_fee.{20}([0-9]+\.[0-9]+)", txt):
-		fees.append(str(int(prices[i]) - int(each)))
+		fees.append(str(float(prices[i]) - float(each)))
 		i += 1
 	items = []
 	i = 0
