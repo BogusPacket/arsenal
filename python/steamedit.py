@@ -70,6 +70,6 @@ def getSkinListings(skin, start, cnt):
 	items = []
 	i = 0
 	for each in links:
-		items.append(Item(marketid=marketids[i], itemid=itemids[i], price=prices[i], fee=fees[i]))
+		items.append(Skin(marketid=marketids[i], itemid=itemids[i], price=prices[i], fee=fees[i]))
 		i += 1
 	return items
