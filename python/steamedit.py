@@ -10,7 +10,7 @@ class DesktopClient(threading.Thread):
 		self.client.cli_login(username=username, password=password)
 	def startCSGO(self):
 		self.csgo.launch()
-	def run():
+	def run(self):
 		self.client.run_forever()
 		
 class Skin:
