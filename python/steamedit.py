@@ -11,8 +11,8 @@ class DesktopClient:
 	def startCSGO(self):
 		self.csgo.launch()
 		
-class Skin(DesktopClient):
-	def __init__(self, name=None, steamid=None, itemid=None, assetid=None, price=None, fee=None, float=None):
+class Skin:
+	def __init__(self, client=None, name=None, steamid=None, itemid=None, assetid=None, price=None, fee=None, float=None):
 		self.name=name
     		self.marketid=marketid
     		self.assetid=assetid
@@ -21,17 +21,18 @@ class Skin(DesktopClient):
 		self.float=float
 		self.fee=fee
 		self.price=price
+		self.client=client
 		
 	def getFloat(self, *extrasteamclients): #getFloat will alternate between steam clients
-		self.csgo.send(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest, {
+		self.client.csgo.send(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest, {
                     'param_s': self.steamid,
                     'param_a': self.assetid,
                     'param_d': self.itemid,
                     'param_m': self.marketid,})
-		response, = cs.wait_event(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse)
+		response, = self.client.csgo.wait_event(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse)
 		self.float=struct.unpack("f", struct.pack("i", response.iteminfo.paintwear))[0]
 		
-def getSkinListings(skin, start, cnt):
+def getSkinListings(desktopclient, skin, start, cnt):
 	global url
 	url = "http://steamcommunity.com/market/listings/730/" + skin + "/render/?query=&start=" + str(start) + "&count=" + str(cnt) + "&country=US&language=english&currency=1"
 	url = url.replace(" ", "%20")
