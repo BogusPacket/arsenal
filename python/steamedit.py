@@ -21,18 +21,17 @@ class Skin:
 		self.float=float
 		self.fee=fee
 		self.price=price
-		self.client=client
 		
-	def getFloat(self, *extrasteamclients): #getFloat will alternate between steam clients
-		self.client.csgo.send(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest, {
+	def getFloat(self, client): #getFloat will alternate between steam clients
+		client.send(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest, {
                     'param_s': self.steamid,
                     'param_a': self.assetid,
                     'param_d': self.itemid,
                     'param_m': self.marketid,})
-		response, = self.client.csgo.wait_event(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse)
+		response, = client.wait_event(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse)
 		self.float=struct.unpack("f", struct.pack("i", response.iteminfo.paintwear))[0]
 		
-def getSkinListings(desktopclient, skin, start, cnt):
+def getSkinListings(skin, start, cnt):
 	global url
 	url = "http://steamcommunity.com/market/listings/730/" + skin + "/render/?query=&start=" + str(start) + "&count=" + str(cnt) + "&country=US&language=english&currency=1"
 	url = url.replace(" ", "%20")
