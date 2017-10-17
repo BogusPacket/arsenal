@@ -34,7 +34,7 @@ class Skin:
 		response, = client.csgo.wait_event(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse)
 		self.float=struct.unpack("f", struct.pack("i", response.iteminfo.paintwear))[0]
 		
-def getSkinListings(skin, start, cnt, username=):
+def getSkinListings(skin, start, cnt):
 	global url
 	url = "http://steamcommunity.com/market/listings/730/" + skin + "/render/?query=&start=" + str(start) + "&count=" + str(cnt) + "&country=US&language=english&currency=1"
 	url = url.replace(" ", "%20")
