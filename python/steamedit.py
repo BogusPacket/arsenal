@@ -12,7 +12,7 @@ class DesktopClient:
 		self.csgo.launch()
 		
 class Skin:
-	def __init__(self, name=None, steamid=0, itemid=None, assetid=None, price=None, fee=None, float=None, marketid=0):
+	def __init__(self, name=None, steamid=0, itemid=0, assetid=0, price=None, fee=None, float=None, marketid=0):
 		self.name=name
     		self.marketid=marketid
     		self.assetid=assetid
