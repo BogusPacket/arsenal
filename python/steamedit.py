@@ -7,6 +7,7 @@ class DesktopClient(threading.Thread):
 		self.username = username
 		self.password = password
 		self.client=steam.SteamClient()
+		self.csgo=csgo.CSGOClient(self.client)
 	def run(self): 
 		self.client = steam.SteamClient()
 		self.client.cli_login(username=self.username, password=self.password)
