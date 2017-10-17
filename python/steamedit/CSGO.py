@@ -1,5 +1,6 @@
+#!/usr/bin/python
 import steamkit.clients
-class Item(Desktop):
+class Skin(Desktop):
 	def __init__(self, name=None, steamid=None, itemid=None, assetid=None, price=None, fee=None, float=None):
 		self.name=name
     		self.marketid=marketid
