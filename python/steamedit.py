@@ -8,10 +8,10 @@ class DesktopClient(threading.Thread):
 		self.password = password
 		self.client = steam.SteamClient()
 		self.csgo = csgo.CSGOClient(self.client)
+		self.client.cli_login(username=username, password=password)
 	def startCSGO(self):
 		self.csgo.launch()
 	def run(self):
-		self.client.cli_login(username=username, password=password)
 		self.client.run_forever()
 		
 class Skin:
