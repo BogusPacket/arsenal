@@ -45,7 +45,7 @@ def getSkinListings(skin, start, cnt):
 	marketids=[]
 	itemids=[]
 	assetids=[]
-	prices[]
+	prices=[]
 	fees=[]
 	for each in links:
 		marketid = each.split("M")[1].split("A")[0]
