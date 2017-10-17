@@ -8,6 +8,5 @@ class Desktop:
 		self.client = steam.SteamClient()
 		self.csgo = csgo.CSGOClient(self.client)
 		self.client.cli_login(username=username, password=password)
-		self.client.run_forever()
 	def startCSGO(self):
 		self.csgo.launch()
