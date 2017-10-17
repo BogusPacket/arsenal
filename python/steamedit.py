@@ -3,6 +3,7 @@ import steam, csgo, urllib, re, threading
 from csgo.enums import ECsgoGCMsg
 class DesktopClient(threading.Thread):
 	def __init__(self, username='', password=''):
+		threading.Thread.__init__(self)
 		self.username = username
 		self.password = password
 		self.client = steam.SteamClient()
