@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import steam, csgo, urllib, re
+from csgo.enums import ECsgoGCMsg
 class DesktopClient:
 	def __init__(self, username='', password=''):
 		self.username = username
