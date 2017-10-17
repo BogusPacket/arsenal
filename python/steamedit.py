@@ -1,14 +1,10 @@
 #!/usr/bin/python
 import steam, csgo, urllib, re, threading
 from csgo.enums import ECsgoGCMsg
-class DesktopClient(threading.Thread):
+class DesktopClient:
 	def __init__(self, username='', password=''):
-		threading.Thread.__init__(self)
 		self.username = username
 		self.password = password
-		self.client=steam.SteamClient()
-		self.csgo=csgo.CSGOClient(self.client)
-	def run(self): 
 		self.client = steam.SteamClient()
 		self.client.cli_login(username=self.username, password=self.password)
 		self.csgo = csgo.CSGOClient(self.client)
@@ -38,7 +34,7 @@ class Skin:
 		response, = client.csgo.wait_event(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse)
 		self.float=struct.unpack("f", struct.pack("i", response.iteminfo.paintwear))[0]
 		
-def getSkinListings(skin, start, cnt):
+def getSkinListings(skin, start, cnt, username=):
 	global url
 	url = "http://steamcommunity.com/market/listings/730/" + skin + "/render/?query=&start=" + str(start) + "&count=" + str(cnt) + "&country=US&language=english&currency=1"
 	url = url.replace(" ", "%20")
