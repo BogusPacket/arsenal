@@ -7,12 +7,11 @@ class DesktopClient(threading.Thread):
 		self.username = username
 		self.password = password
 		self.client=steam.SteamClient()
-	def startCSGO(self):
-		self.csgo = csgo.CSGOClient(self.client)
-		self.csgo.launch()
 	def run(self): 
 		self.client = steam.SteamClient()
 		self.client.cli_login(username=self.username, password=self.password)
+		self.csgo = csgo.CSGOClient(self.client)
+		self.csgo.launch()
 		self.client.run_forever()
 		
 class Skin:
