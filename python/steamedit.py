@@ -1,13 +1,14 @@
 #!/usr/bin/python
-import steam, csgo, urllib, re
+import steam, csgo, urllib, re, threading
 from csgo.enums import ECsgoGCMsg
-class DesktopClient:
+class DesktopClient(threading.Thread):
 	def __init__(self, username='', password=''):
 		self.username = username
 		self.password = password
 		self.client = steam.SteamClient()
 		self.csgo = csgo.CSGOClient(self.client)
 		self.client.cli_login(username=username, password=password)
+		self.client.run_forever()
 	def startCSGO(self):
 		self.csgo.launch()
 		
