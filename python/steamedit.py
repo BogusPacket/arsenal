@@ -15,6 +15,7 @@ class Skin:
 		self.name=name
     		self.marketid=marketid
     		self.assetid=assetid
+		self.itemid=itemid
     		self.steamid=steamid
 		self.float=float
 		self.fee=fee
