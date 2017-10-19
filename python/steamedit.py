@@ -1,6 +1,12 @@
 #!/usr/bin/python
 import steam, csgo, urllib, re, threading, struct
 from csgo.enums import ECsgoGCMsg
+class WebClient:
+	def __init__(self, username='', password=''):
+		client = steam.webauth.WebAuth(username, password)
+		client.login()
+	def buy(self, marketid):
+	
 class DesktopClient(threading.Thread):
 	logged_on=0
 	csgo_ready=0
