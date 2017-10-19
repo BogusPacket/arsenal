@@ -3,9 +3,9 @@ import steam, csgo, urllib, re, threading, struct
 from csgo.enums import ECsgoGCMsg
 class WebClient:
 	sessionid=str()
-	def __init__(self, username='', password=''):
+	def __init__(self, username='', password='', code=''):
 		client = steam.webauth.WebAuth(username, password)
-		self.session = client.login()
+		self.session = client.login(twofactor_code=code)
 		self.session.get("https://store.steampowered.com/account/history")
 		self.session.get("http://steamcommunity.com/market/listings/730/M249%20%7C%20Gator%20Mesh%20%28Factory%20New%29")
 		for each in self.session.cookies:
