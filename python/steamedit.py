@@ -34,7 +34,7 @@ class WebClient:
 					"accept" : "*/*",
 					"user-agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36",
 					"authority" : "steamcommunity.com",
-					"accept-encoding" : "gzip, deflate, br" }, data="sessionid=" + sessionid + "&currency=1&subtotal=" + subtotal + "&fee=" + fee + "&total=" + total + "&quantity=1")
+					"accept-encoding" : "gzip, deflate, br" }, data="sessionid=" + self.sessionid + "&currency=1&subtotal=" + subtotal + "&fee=" + fee + "&total=" + total + "&quantity=1")
 		print r.content 
 class DesktopClient(threading.Thread):
 	logged_on=0
