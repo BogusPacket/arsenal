@@ -48,6 +48,7 @@ class Skin:
                     'param_m': int(self.marketid),})
 		response, = client.csgo.wait_event(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse)
 		self.float=struct.unpack("f", struct.pack("i", response.iteminfo.paintwear))[0]
+		print self.float
 		
 def getSkinListings(skin, start, cnt):
 	global url
