@@ -1,14 +1,28 @@
 #!/usr/bin/python
 import steam, csgo, urllib, re, threading
 from csgo.enums import ECsgoGCMsg
-class DesktopClient:
+class DesktopClient(threading.Thread):
+	logged_on=0
+	csgo_ready=0
+	client=steam.SteamClient()
+	csgo=csgo.CSGOClient(client)
 	def __init__(self, username='', password=''):
-		self.username = username
-		self.password = password
-		self.client = steam.SteamClient()
+		threading.Thread.__init__(self)
+		self.username=username
+		self.password=password
 		self.client.cli_login(username=self.username, password=self.password)
-		self.csgo = csgo.CSGOClient(self.client)
-		self.csgo.launch()
+	def run(self):
+		while 1: pass
+		#self.client.run_forever()
+		
+@DesktopClient.client.on('logged_on')
+def logged_on():
+	DesktopClient.logged_on=1
+	DesktopClient.csgo.launch()
+	
+@DesktopClient.csgo.on('ready')
+def ready():
+	DesktopClient.csgo_ready=1
 		
 class Skin:
 	def __init__(self, name=None, steamid=0, itemid=0, assetid=0, price=None, fee=None, float=None, marketid=0):
