@@ -47,7 +47,8 @@ class DesktopClient(threading.Thread):
 		self.password=password
 		self.client.cli_login(username=self.username, password=self.password)
 		while self.logged_on == 0 and self.csgo_ready == 0:
-			continue
+			pass
+		return
 	def run(self):
 		self.client.run_forever()
 		
