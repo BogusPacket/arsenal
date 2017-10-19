@@ -37,10 +37,6 @@ class Skin:
 		self.price=price
 		
 	def getFloat(self, client): #getFloat will alternate between steam clients
-		print self.steamid
-		print self.assetid
-		print self.itemid
-		print self.marketid
 		client.csgo.send(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest, {
                     'param_s': int(self.steamid),
                     'param_a': int(self.assetid),
