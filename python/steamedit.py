@@ -28,7 +28,7 @@ class WebClient:
 				fee = each
 				break
 		subtotal = str(int(total) - int(fee))
-		r = self.session.post(getBuyLinkFromInspectLink(item['link']), headers={"referer" : "http://steamcommunity.com/market/listings/730/M249%20%7C%20Gator%20Mesh%20%28Factory%20New%29",
+		r = self.session.post("https://steamcommunity.com/market/buylisting/" + item.marketid, headers={"referer" : "http://steamcommunity.com/market/listings/730/M249%20%7C%20Gator%20Mesh%20%28Factory%20New%29",
 					"content-type" : "application/x-www-form-urlencoded; charset=UTF-8",
 					"origin"  : "http://steamcommunity.com",
 					"accept" : "*/*",
