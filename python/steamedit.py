@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import steam, csgo, urllib, re, threading
+import steam, csgo, urllib, re, threading, struct
 from csgo.enums import ECsgoGCMsg
 class DesktopClient(threading.Thread):
 	logged_on=0
