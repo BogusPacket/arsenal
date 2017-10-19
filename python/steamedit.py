@@ -17,11 +17,13 @@ class DesktopClient(threading.Thread):
 		
 @DesktopClient.client.on('logged_on')
 def logged_on():
+	print "Logged On!"
 	DesktopClient.logged_on=1
 	DesktopClient.csgo.launch()
 	
 @DesktopClient.csgo.on('ready')
 def ready():
+	print "CSGO Ready!"
 	DesktopClient.csgo_ready=1
 		
 class Skin:
