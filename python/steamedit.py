@@ -12,8 +12,7 @@ class DesktopClient(threading.Thread):
 		self.password=password
 		self.client.cli_login(username=self.username, password=self.password)
 	def run(self):
-		while 1: pass
-		#self.client.run_forever()
+		self.client.run_forever()
 		
 @DesktopClient.client.on('logged_on')
 def logged_on():
