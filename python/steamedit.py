@@ -2,13 +2,13 @@
 import steam, csgo, urllib, re, threading, struct
 from csgo.enums import ECsgoGCMsg
 class WebClient:
-	sessionid=int()
+	sessionid=str()
 	def __init__(self, username='', password=''):
 		client = steam.webauth.WebAuth(username, password)
-		session = client.login()
-		session.get("https://store.steampowered.com/account/history")
-		session.get("http://steamcommunity.com/market/listings/730/M249%20%7C%20Gator%20Mesh%20%28Factory%20New%29")
-		for each in session.cookies:
+		self.session = client.login()
+		self.session.get("https://store.steampowered.com/account/history")
+		self.session.get("http://steamcommunity.com/market/listings/730/M249%20%7C%20Gator%20Mesh%20%28Factory%20New%29")
+		for each in self.session.cookies:
 			if each.name == "sessionid":
 				self.sessionid=each.value
 				break
@@ -27,17 +27,15 @@ class WebClient:
 			if each != "0":
 				fee = each
 				break
-	subtotal = str(int(total) - int(fee))
-	print total
-	print subtotal
-	r = s.post(getBuyLinkFromInspectLink(item['link']), headers={"referer" : "http://steamcommunity.com/market/listings/730/M249%20%7C%20Gator%20Mesh%20%28Factory%20New%29",
+		subtotal = str(int(total) - int(fee))
+		r = self.session.post(getBuyLinkFromInspectLink(item['link']), headers={"referer" : "http://steamcommunity.com/market/listings/730/M249%20%7C%20Gator%20Mesh%20%28Factory%20New%29",
 					"content-type" : "application/x-www-form-urlencoded; charset=UTF-8",
 					"origin"  : "http://steamcommunity.com",
 					"accept" : "*/*",
 					"user-agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36",
 					"authority" : "steamcommunity.com",
 					"accept-encoding" : "gzip, deflate, br" }, data="sessionid=" + sessionid + "&currency=1&subtotal=" + subtotal + "&fee=" + fee + "&total=" + total + "&quantity=1")
-	print r.content 
+		print r.content 
 class DesktopClient(threading.Thread):
 	logged_on=0
 	csgo_ready=0
