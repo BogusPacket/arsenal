@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import steam, csgo, urllib, re, threading, struct
+import steam, csgo, urllib, re, threading, struct, logging
 from multiprocessing import Process, Pipe
 from csgo.enums import ECsgoGCMsg
 class WebClient:
