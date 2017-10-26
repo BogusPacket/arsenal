@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import steam, csgo, urllib, re, threading, struct
+from multiprocessing import Process, Value, Array
 from csgo.enums import ECsgoGCMsg
 class WebClient:
 	sessionid=str()
@@ -41,13 +42,19 @@ class Client():
         csgo_launched=0
         Steam=steam.SteamClient()
         CSGO=csgo.CSGOClient(Steam)
+	def login(self, pipe):
+		self.Steam.cli_login(username=self.username, password=self.password)
+		pipe.send(self.Steam)
         def __init__(self, username='', password='', code=None, log=int()):
                 self.username=username
                 self.password=password
                 if log:
                         logging.basicConfig(format='[%(asctime)s] %(levelname)s %(name)s: %(message)s', level=logging.DEBUG)
                 #self.Steam.login(username, password=password, two_factor_code=code)
-		self.Steam.cli_login(username=username, password=password)
+		parent_conn, child_conn = Pipe()
+		p = Process(target=login, args=(self, child_conn)).start()
+		self.Steam=parent_conn.recv()
+		
 @Client.Steam.on('logged_on')
 def logged_on():
         Client.logged_on=1
