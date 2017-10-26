@@ -36,32 +36,25 @@ class WebClient:
 					"authority" : "steamcommunity.com",
 					"accept-encoding" : "gzip, deflate, br" }, data="sessionid=" + self.sessionid + "&currency=1&subtotal=" + subtotal + "&fee=" + fee + "&total=" + total + "&quantity=1")
 		print r.content 
-class DesktopClient(threading.Thread):
-	logged_on=0
-	csgo_ready=0
-	client=steam.SteamClient()
-	csgo=csgo.CSGOClient(client)
-	def __init__(self, username='', password=''):
-		threading.Thread.__init__(self)
-		self.username=username
-		self.password=password
-		self.client.cli_login(username=self.username, password=self.password)
-		while self.logged_on == 0 and self.csgo_ready == 0:
-			pass
-		return
-	def run(self):
-		self.client.run_forever()
-		
-@DesktopClient.client.on('logged_on')
+class Client():
+        logged_on=0
+        csgo_launched=0
+        Steam=steam.SteamClient()
+        CSGO=csgo.CSGOClient(Steam)
+        def __init__(self, username='', password='', code=None, log=int()):
+                self.username=username
+                self.password=password
+                if log:
+                        logging.basicConfig(format='[%(asctime)s] %(levelname)s %(name)s: %(message)s', level=logging.DEBUG)
+                self.Steam.login(username, password=password, two_factor_code=code)
+@Client.Steam.on('logged_on')
 def logged_on():
-	print "Logged On!"
-	DesktopClient.logged_on=1
-	DesktopClient.csgo.launch()
-	
-@DesktopClient.csgo.on('ready')
+        Client.logged_on=1
+        Client.CSGO.launch()
+
+@Client.CSGO.on('ready')
 def ready():
-	print "CSGO Ready!"
-	DesktopClient.csgo_ready=1
+        Client.csgo_launched=1
 		
 class Skin:
 	def __init__(self, name=None, steamid=0, itemid=0, assetid=0, price=None, fee=None, float=None, marketid=0):
@@ -75,12 +68,12 @@ class Skin:
 		self.price=price
 		
 	def getFloat(self, client): #getFloat will alternate between steam clients
-		client.send(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest, {
+		client.CSGO.send(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockRequest, {
                     'param_s': int(self.steamid),
                     'param_a': int(self.assetid),
                     'param_d': int(self.itemid),
                     'param_m': int(self.marketid),})
-		response, = client.wait_event(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse)
+		response, = client.CSGO.wait_event(ECsgoGCMsg.EMsgGCCStrike15_v2_Client2GCEconPreviewDataBlockResponse)
 		self.float=struct.unpack("f", struct.pack("i", response.iteminfo.paintwear))[0]
 		return
 		
