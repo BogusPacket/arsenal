@@ -46,7 +46,8 @@ class Client():
                 self.password=password
                 if log:
                         logging.basicConfig(format='[%(asctime)s] %(levelname)s %(name)s: %(message)s', level=logging.DEBUG)
-                self.Steam.login(username, password=password, two_factor_code=code)
+                #self.Steam.login(username, password=password, two_factor_code=code)
+		self.Steam.cli_login(username=username, password=password)
 @Client.Steam.on('logged_on')
 def logged_on():
         Client.logged_on=1
