@@ -44,6 +44,7 @@ class Client():
         CSGO=csgo.CSGOClient(Steam)
 	def login(self, ):
 		self.Steam.cli_login(username=self.username, password=self.password)
+		return
         def __init__(self, username='', password='', code=None, log=int()):
                 self.username=username
                 self.password=password
@@ -54,6 +55,7 @@ class Client():
 		p = Process(target=self.login).start()
 		self.Steam=parent_conn.recv()
 		p.join()
+		return
 		
 @Client.Steam.on('logged_on')
 def logged_on():
