@@ -52,7 +52,7 @@ class Client():
                         logging.basicConfig(format='[%(asctime)s] %(levelname)s %(name)s: %(message)s', level=logging.DEBUG)
                 #self.Steam.login(username, password=password, two_factor_code=code)
 		parent_conn, child_conn = Pipe()
-		p = Process(target=self.login, args=(child_conn, )).start()
+		p = Process(target=self.login).start()
 		self.Steam=parent_conn.recv()
 		
 @Client.Steam.on('logged_on')
