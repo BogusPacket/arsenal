@@ -42,9 +42,8 @@ class Client():
         csgo_launched=0
         Steam=steam.SteamClient()
         CSGO=csgo.CSGOClient(Steam)
-	def login(self, pipe):
+	def login(self, ):
 		self.Steam.cli_login(username=self.username, password=self.password)
-		pipe.send(self.Steam)
         def __init__(self, username='', password='', code=None, log=int()):
                 self.username=username
                 self.password=password
