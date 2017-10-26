@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import steam, csgo, urllib, re, threading, struct
-from multiprocessing import Process, Value, Array
+from multiprocessing import Process, Pipe
 from csgo.enums import ECsgoGCMsg
 class WebClient:
 	sessionid=str()
