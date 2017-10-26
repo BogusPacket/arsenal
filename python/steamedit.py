@@ -53,7 +53,7 @@ class Client():
 		parent_conn, child_conn = Pipe()
 		p = Process(target=self.login).start()
 		self.Steam=parent_conn.recv()
-		 p.join()
+		p.join()
 		
 @Client.Steam.on('logged_on')
 def logged_on():
