@@ -53,7 +53,6 @@ class Client():
                 #self.Steam.login(username, password=password, two_factor_code=code)
 		parent_conn, child_conn = Pipe()
 		p = Process(target=self.login).start()
-		p.join()
 		return
 		
 @Client.Steam.on('logged_on')
