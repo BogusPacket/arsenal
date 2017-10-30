@@ -32,7 +32,7 @@ struct SteamMsg_Logon {
 	uint32_t client_package_version = 5;
 	std::string client_language = 6;
 	uint32_t client_os_type = 7;
-	bool should_remember_password = 8 [default = false];
+	bool should_remember_password = false;
   std::string wine_version = 9;
   uint32_t ping_ms_from_cell_search = 10;
 	uint32_t public_ip = 20;
