@@ -46,6 +46,13 @@ int main(int argc, char* argv[]) {
 		sock.dst("192.30.253.113");
   	sock.dport(80);
 		sock.CONNECT();}
+	else {
+		TCP sock;
+		sock.dst("104.197.16.8");
+		sock.dport(3128);
+		sock.SEND();
+		
+	}
 	return 1;}
 
 /*else if (strcmp(argv[1], "converter") == 0){
