@@ -97,4 +97,5 @@ class TCP : public Socket<TCP> {
   TCP(){this->sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); this->server.sin_family=AF_INET;}
   int SEND(std::string buf){return send(this->sock, buf.c_str(), buf.size(), 0);}   //TODO: Error Handling
   void RECV(){char cur; while (read(this->sock, &cur, 1) > 0 ) {cout << cur;}}};
+class HTTP : public TCP;
 #endif
